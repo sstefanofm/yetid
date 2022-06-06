@@ -1,18 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <?php
 
 session_start();
 
 include 'shared/view/renderer.php';
+include 'shared/includes/head.php';
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Yetid</title>
-</head>
 
 <body>
   <a href="routes/register/register.php">Sign up</a>
@@ -22,6 +18,9 @@ include 'shared/view/renderer.php';
   session_unset();
   ?>
 
+  <?php
+  include 'shared/includes/scripts.php';
+  ?>
 </body>
 
 </html>

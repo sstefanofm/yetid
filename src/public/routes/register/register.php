@@ -9,10 +9,9 @@ include '../../shared/view/renderer.php';
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <title>Sign up to Yetid</title>
-</head>
+<?php
+include '../../shared/includes/head.php';
+?>
 
 <body>
   <?php
@@ -24,6 +23,10 @@ include '../../shared/view/renderer.php';
     <input type="password" name="password"> <br>
     <input type="submit" name="submit"> <br>
   </form>
+
+  <?php
+  include '../../shared/includes/scripts.php';
+  ?>
 </body>
 
 </html>
