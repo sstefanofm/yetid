@@ -1,0 +1,15 @@
+.red {
+  background-color: #9f1f33 !important;
+  color: #f4f4f4 !important;
+}
+
+.logo {
+  font-family: "Metamorphous", cursive;
+  font-size: 2em;
+  line-height: 1.3;
+}
+
+.btn-green {
+  color: #ffffff !important;
+  background-color: #16c465 !important;
+}

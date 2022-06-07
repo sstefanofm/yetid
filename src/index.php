@@ -9,9 +9,13 @@ include 'shared/view/renderer.php';
 include 'shared/includes/head.php';
 
 ?>
+<link rel="stylesheet" href="css/navbar_styles.css" media="all">
+<link rel="stylesheet" href="css/body_styles.css" media="all">
 
 <body>
-  <a href="routes/register/register.php">Sign up</a>
+  <?php
+  include 'shared/includes/navbar.php';
+  ?>
 
   <?php
   render_alert($_SESSION['success'], $_SESSION['message']);
