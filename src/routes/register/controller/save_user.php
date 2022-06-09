@@ -18,6 +18,7 @@ $username_validation_code = validate_string($username, $username_min_length, $us
 if ($username_validation_code != 0) {
   $_SESSION['success'] = false;
   $_SESSION['message'] = validation_message($username_validation_code, "Username", $username_min_length, $username_max_length);
+  $_SESSION['message_showed'] = false;
 
   redirect_to("../register.php");
 
@@ -33,8 +34,8 @@ $confirm_password_validation_code = validate_string($confirm_password, $password
 
 if ($password_validation_code != 0 || $confirm_password_validation_code != 0) {
   $_SESSION['success'] = false;
-
   $_SESSION['message'] = validation_message($password_validation_code != 0 ? $password_validation_code : $confirm_password_validation_code, "Password", $password_min_length);
+  $_SESSION['message_showed'] = false;
 
   redirect_to("../register.php");
 
@@ -49,6 +50,7 @@ if ($user_model->check_passwords()) {
   if ($user_model->create_user()) {
     $_SESSION['success'] = true;
     $_SESSION['message'] = "User registered successfully!";
+    $_SESSION['message_showed'] = false;
 
     redirect_to("../../../index.php");
 
@@ -57,6 +59,7 @@ if ($user_model->check_passwords()) {
 } else {
   $_SESSION['success'] = false;
   $_SESSION['message'] = "Both passwords do not match.";
+  $_SESSION['message_showed'] = false;
 
   redirect_to("../register.php");
 
@@ -65,6 +68,7 @@ if ($user_model->check_passwords()) {
 
 $_SESSION['success'] = false;
 $_SESSION['message'] = "There was an error creating the user.";
+$_SESSION['message_showed'] = false;
 
 redirect_to("../register.php");
 

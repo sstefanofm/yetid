@@ -24,7 +24,10 @@ include '../../shared/includes/head.php';
   ?>
 
   <?php
-  render_alert($_SESSION['success'], $_SESSION['message']);
+  if (!$_SESSION['message_showed']) {
+    render_alert($_SESSION['success'], $_SESSION['message']);
+    $_SESSION['message_showed'] = true;
+  }
   ?>
 
   <div class="row">
