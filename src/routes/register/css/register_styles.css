@@ -74,3 +74,16 @@
 .form-buttons {
   margin-top: 1.2em;
 }
+
+.btn-go-to-login {
+  margin: auto;
+  width: 300px;
+  text-align: center;
+  border: 0;
+  color: #9f1f33;
+}
+
+.btn-go-to-login:hover {
+  color: #7a1827;
+  background-color: #f4f4f4;
+}
