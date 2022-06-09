@@ -2,6 +2,6 @@ body {
   background-color: #fafafa !important;
 }
 
-.btn-register {
-  background-color: #9f1f33;
+.alert {
+  border-radius: 0px !important;
 }
