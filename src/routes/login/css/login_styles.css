@@ -1,0 +1,83 @@
+.btn-register {
+  background-color: #f4f4f4;
+  color: #9f1f33;
+}
+
+.grey-card {
+  background-color: #f4f4f4;
+}
+
+.yetid-font {
+  font-family: "Metamorphous", cursive;
+  font-size: 1.7em;
+  margin-bottom: 1em;
+}
+
+.username,
+.password {
+  background-color: #d9d9d9;
+  color: #565656;
+  padding: 10px;
+  border: 0;
+  font-size: 18px;
+  border-radius: 0px;
+  width: 100%;
+}
+
+.username {
+  margin-bottom: 1em;
+}
+
+input[type="submit"] {
+  background-color: #9f1f33;
+  color: #f4f4f4;
+}
+
+input[type="submit"]:hover {
+  background-color: #7a1827;
+  color: #f4f4f4;
+}
+
+.password:focus,
+.username:focus {
+  border: 0 !important;
+  outline: none !important;
+  background-color: #d9d9d9 !important;
+  color: #565656 !important;
+}
+
+input[type="submit"]:focus {
+  background-color: #7a1827;
+  color: #f4f4f4;
+}
+
+.form-btn {
+  padding: 0.8em;
+  border-radius: 90px !important;
+  margin-bottom: 1em;
+}
+
+.btn-register {
+  border: 2px solid #9f1f33;
+}
+
+.forgot-password {
+  color: #9f1f33;
+  padding: 3px;
+  margin-top: 3px;
+  display: inline-block;
+}
+
+.checkbox {
+  float: right;
+  width: 200px;
+  border: 1px solid #d9d9d9;
+  color: #565656;
+  padding: 3px;
+  margin-top: 3px;
+  text-align: center;
+}
+
+.form-buttons {
+  margin-top: 1.2em;
+}
