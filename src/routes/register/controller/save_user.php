@@ -25,13 +25,23 @@ if ($username_validation_code != 0) {
 }
 
 $password = $_POST['password'];
+$confirm_password = $_POST['confirm-password'];
 $password_min_length = 8;
 $password_max_length = 255;
 $password_validation_code = validate_string($password, $password_min_length, $password_max_length);
+$confirm_password_validation_code = validate_string($confirm_password, $password_min_length, $password_max_length);
 
 if ($password_validation_code != 0) {
   $_SESSION['success'] = false;
-  $_SESSION['message'] = validation_message($password_validation_code, "Password", $password_min_length, $password_max_length);
+  $_SESSION['message'] = validation_message($password_validation_code, "Password", $password_min_length);
+
+  redirect_to("../register.php");
+
+  die();
+}
+if ($confirm_password_validation_code != 0) {
+  $_SESSION['success'] = false;
+  $_SESSION['message'] = validation_message($confirm_password_validation_code, "Password", $password_min_length);
 
   redirect_to("../register.php");
 
@@ -40,13 +50,23 @@ if ($password_validation_code != 0) {
 
 // create user 
 
-$user_model = new UserModel($username, $password);
 
-if ($user_model->create_user()) {
-  $_SESSION['success'] = true;
-  $_SESSION['message'] = "User registered successfully!";
+if (strcmp($password, $confirm_password) == 0) {
+  $user_model = new UserModel($username, $password, $confirm_password);
 
-  redirect_to("../../../index.php");
+  if ($user_model->create_user()) {
+    $_SESSION['success'] = true;
+    $_SESSION['message'] = "User registered successfully!";
+
+    redirect_to("../../../index.php");
+
+    die();
+  }
+} else {
+  $_SESSION['success'] = false;
+  $_SESSION['message'] = "Both passwords do not match.";
+
+  redirect_to("../register.php");
 
   die();
 }

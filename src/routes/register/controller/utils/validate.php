@@ -13,7 +13,7 @@ function validate_string($string, $min_length, $max_length)
   return 0;
 }
 
-function validation_message($error_code, $string_name, $min_length, $max_length)
+function validation_message($error_code, $string_name, $min_length)
 {
   switch ($error_code) {
     case 1:
@@ -22,7 +22,7 @@ function validation_message($error_code, $string_name, $min_length, $max_length)
       break;
 
     case 2:
-      return "$string_name must be between $min_length and $max_length characters long.";
+      return "$string_name must have more than $min_length characters.";
 
       break;
 
