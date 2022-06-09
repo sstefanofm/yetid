@@ -54,6 +54,7 @@ include '../../shared/includes/head.php';
 
           <div class="form-group">
             <input class="btn btn-register form-control form-btn" type="submit" name="submit" value="Register"> <br>
+            <a class="btn-go-to-login form-control" href="http://localhost/stf/yetid/src/routes/login/login.php">Already have an account?</a>
           </div>
         </form>
       </div>
