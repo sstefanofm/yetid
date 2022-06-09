@@ -1,6 +1,6 @@
 # Yetid
 
-![](https://img.shields.io/badge/focus%20timer-developing-red)
+![](https://img.shields.io/badge/developing-red)
 
 ## Mockup
 
