@@ -31,9 +31,14 @@ session_start();
 <?php
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 ?>
-  <div class="user-options">Options</div>
+  <div class="hidden user-options">
+    <div class="user-username"><?php echo $_SESSION['username'] ?></div>
+    <div class="user-logout"><button class="logout btn">Log out</button></div>
+  </div>
 <?php
 }
 ?>
 
+
+<script src="http://localhost/stf/yetid/src/js/triggerLogout.js"></script>
 <script src="http://localhost/stf/yetid/src/js/toggleUserOptions.js"></script>
