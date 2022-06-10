@@ -35,7 +35,7 @@ include '../../shared/includes/head.php'
     <div class="col-md-4 card card-body grey-card m-4 row">
       <div class="m-4 m-auto">
         <h2 class="yetid-font">Log in</h2>
-        <form action="controller/save_user.php" method="POST">
+        <form action="controller/check_credentials.php" method="POST">
           <div class="form-group">
             <label class="form-label" for="username">Username</label> <br>
             <input class="username" type="text" name="username"> <br>
