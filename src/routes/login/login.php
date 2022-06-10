@@ -10,7 +10,7 @@ include __DIR__ . '/../../utils/renderer.php';
 <html lang="en">
 
 <?php
-include '../../shared/includes/head.php'
+include __DIR__ . '/../../includes/head.php';
 ?>
 <link rel="stylesheet" href="../../css/navbar_styles.css" media="all">
 <link rel="stylesheet" href="../../css/body_styles.css" media="all">
@@ -19,7 +19,7 @@ include '../../shared/includes/head.php'
 
 <body>
   <?php
-  include '../../shared/includes/navbar.php';
+  include __DIR__ . '/../../includes/navbar.php';
   ?>
 
   <?php
@@ -62,7 +62,7 @@ include '../../shared/includes/head.php'
   </div>
 
   <?php
-  include '../../shared/includes/scripts.php';
+  include __DIR__ . '/../../includes/scripts.php';
   ?>
 
   <script src="js/redirectRegister.js"></script>

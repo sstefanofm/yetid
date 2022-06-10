@@ -10,7 +10,7 @@ include __DIR__ . '/../../utils/renderer.php';
 <html lang="en">
 
 <?php
-include '../../shared/includes/head.php';
+include __DIR__ . '/../../includes/head.php';
 ?>
 <!-- My styles -->
 <link rel="stylesheet" href="../../css/navbar_styles.css" media="all">
@@ -20,7 +20,7 @@ include '../../shared/includes/head.php';
 
 <body>
   <?php
-  include '../../shared/includes/navbar.php';
+  include __DIR__ . '/../../includes/navbar.php';
   ?>
 
   <?php
@@ -68,7 +68,7 @@ include '../../shared/includes/head.php';
 
 
   <?php
-  include '../../shared/includes/scripts.php';
+  include __DIR__ . '/../../includes/scripts.php';
   ?>
 
   <script src="js/checkboxPassword.js"></script>
