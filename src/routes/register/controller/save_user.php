@@ -4,11 +4,7 @@ session_start();
 
 include 'utils/validate.php';
 include '../model/user_model.php';
-
-function redirect_to($location)
-{
-  header("Location: $location");
-}
+include '../../../shared/utils/redirect_to.php';
 
 $username = $_POST['username'];
 $username_min_length = 5;
@@ -20,7 +16,7 @@ if ($username_validation_code != 0) {
   $_SESSION['message'] = validation_message($username_validation_code, "Username", $username_min_length, $username_max_length);
   $_SESSION['message_showed'] = false;
 
-  redirect_to("../register.php");
+  redirect_to_register();
 
   die();
 }
@@ -37,7 +33,7 @@ if ($password_validation_code != 0 || $confirm_password_validation_code != 0) {
   $_SESSION['message'] = validation_message($password_validation_code != 0 ? $password_validation_code : $confirm_password_validation_code, "Password", $password_min_length);
   $_SESSION['message_showed'] = false;
 
-  redirect_to("../register.php");
+  redirect_to_register();
 
   die();
 }
@@ -52,7 +48,7 @@ if ($user_model->check_passwords()) {
     $_SESSION['message'] = "User registered successfully!";
     $_SESSION['message_showed'] = false;
 
-    redirect_to("../../../index.php");
+    redirect_to_index();
 
     die();
   }
@@ -61,7 +57,7 @@ if ($user_model->check_passwords()) {
   $_SESSION['message'] = "Both passwords do not match.";
   $_SESSION['message_showed'] = false;
 
-  redirect_to("../register.php");
+  redirect_to_register();
 
   die();
 }
@@ -70,6 +66,6 @@ $_SESSION['success'] = false;
 $_SESSION['message'] = "There was an error creating the user.";
 $_SESSION['message_showed'] = false;
 
-redirect_to("../register.php");
+redirect_to_register();
 
 die();
