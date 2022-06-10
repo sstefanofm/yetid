@@ -1,6 +1,7 @@
 .red {
   background-color: #9f1f33 !important;
   color: #f4f4f4 !important;
+  padding-top: 0.5em !important;
 }
 
 .logo {
@@ -12,4 +13,56 @@
 .btn-green {
   color: #ffffff !important;
   background-color: #16c465 !important;
+}
+
+.username {
+  color: #f4f4f4;
+  font-size: 1em;
+}
+
+.btn-user {
+  border: 0;
+  border-radius: 100%;
+  width: 1.3em;
+  height: 1.3em;
+  background-image: url("http://localhost/stf/yetid/src/img/user.png");
+  background-size: 1.3em 1.3em;
+}
+
+.hidden {
+  display: none;
+}
+
+.user-options {
+  float: right;
+  width: 20%;
+  text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  .user-options {
+    width: 400px;
+  }
+}
+
+.user-username,
+.logout {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #c4c4c4;
+  background-color: #f4f4f4;
+}
+
+.user-username {
+  font-family: "Metamorphous", cursive;
+}
+
+.user-logout {
+  width: 100%;
+}
+
+.logout {
+  width: 100%;
+  border-radius: 0;
+  font-size: 0.9em;
 }
