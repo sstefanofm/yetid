@@ -2,8 +2,8 @@
 
 session_start();
 
-include '../../../shared/utils/redirect_to.php';
 include '../model/user_model.php';
+include __DIR__ . '/../../../utils/redirect_to.php';
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -34,14 +34,13 @@ if (!$user_model->check_username()) {
 
 $user = $user_model->check_credentials();
 
-$_SESSION['logged_in'] = $user;
-
 if ($user_model->check_credentials()) {
   $_SESSION['success'] = true;
   $_SESSION['message'] = "You are now logged in.";
   $_SESSION['message_showed'] = false;
 
   $_SESSION['logged_in'] = true;
+  $_SESSION['username'] = $username;
 
   redirect_to_index();
 

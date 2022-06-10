@@ -4,7 +4,7 @@ session_start();
 
 include 'utils/validate.php';
 include '../model/user_model.php';
-include '../../../shared/utils/redirect_to.php';
+include __DIR__ . '/../../../utils/redirect_to.php';
 
 $username = $_POST['username'];
 $username_min_length = 5;
