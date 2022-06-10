@@ -2,7 +2,7 @@
 
 session_start();
 
-include '../../shared/view/renderer.php';
+include __DIR__ . '/../../utils/renderer.php';
 
 ?>
 
