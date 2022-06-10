@@ -1,6 +1,7 @@
 .red {
   background-color: #9f1f33 !important;
   color: #f4f4f4 !important;
+  padding-top: 0.5em !important;
 }
 
 .logo {
@@ -12,4 +13,22 @@
 .btn-green {
   color: #ffffff !important;
   background-color: #16c465 !important;
+}
+
+.username {
+  color: #f4f4f4;
+  font-size: 1em;
+}
+
+.btn-user {
+  border: 0;
+  border-radius: 100%;
+  width: 1.3em;
+  height: 1.3em;
+  background-image: url("http://localhost/stf/yetid/src/img/user.png");
+  background-size: 1.3em 1.3em;
+}
+
+.user-options {
+  display: none;
 }
