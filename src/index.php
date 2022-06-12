@@ -11,6 +11,7 @@ include __DIR__ . '/includes/head.php';
 ?>
 <link rel="stylesheet" href="css/navbar_styles.css" media="all">
 <link rel="stylesheet" href="css/body_styles.css" media="all">
+<link rel="stylesheet" href="css/posts_styles.css" media="all">
 
 <body>
   <?php
@@ -22,6 +23,10 @@ include __DIR__ . '/includes/head.php';
     render_alert($_SESSION['success'], $_SESSION['message']);
     $_SESSION['message_showed'] = true;
   }
+  ?>
+
+  <?php
+  include __DIR__ . '/includes/posts.php';
   ?>
 
   <?php
