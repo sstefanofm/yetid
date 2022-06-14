@@ -14,6 +14,30 @@
   padding: 1em;
 }
 
+.btn-colors {
+  border-radius: 99px;
+  border: 0;
+  color: #fafafa;
+}
+
+.btn-home {
+  background-color: #9f1f33;
+}
+
+.btn-home:hover {
+  background-color: #7f0f13;
+  color: #fafafa;
+}
+
+.btn-explore {
+  background-color: #ac727b;
+}
+
+.btn-explore:hover {
+  background-color: #9f1f33;
+  color: #fafafa;
+}
+
 .btn-add {
   border-radius: 99px;
   border: 0;
@@ -88,4 +112,19 @@
 
 .image {
   width: 100%;
+}
+
+/* Upload zone */
+
+.container-upload {
+  padding: 1em;
+  border: 1px solid #c4c4c4;
+}
+
+.btn-upload {
+  border: 1px solid black;
+}
+
+.btn-upload:hover {
+  box-shadow: 0px 0px 9px #9f1f33;
 }
