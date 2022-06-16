@@ -89,3 +89,4 @@ if ($logged) {
 <script src="http://localhost/stf/yetid/src/js/orderByButton.js"></script>
 <script src="http://localhost/stf/yetid/src/js/goToCreatePost.js"></script>
 <script src="http://localhost/stf/yetid/src/js/goToPage.js"></script>
+<script src="http://localhost/stf/yetid/src/js/goToExplore.js"></script>
