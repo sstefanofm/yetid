@@ -53,6 +53,8 @@ include __DIR__ . '/../../utils/renderer.php';
   <script src="js/addButtonToggle.js"></script>
   <script src="js/addElements.js"></script>
   <script src="js/uploadPost.js"></script>
+  <script src="../../js/goToHome.js"></script>
+  <script src="../../js/goToExplore.js"></script>
 
 </body>
 
