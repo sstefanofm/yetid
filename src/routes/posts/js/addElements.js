@@ -22,6 +22,7 @@ const createButtons = (inputElement, newElement) => {
   addButton.classList.add("btn");
   addButton.classList.add("btn-add-element");
   addButton.innerHTML = "Add";
+  addButton.disabled = true;
 
   addButton = addButtonFunctionality(addButton, inputElement, newElement);
 
@@ -61,6 +62,12 @@ const cancelButtonFunctionality = (button, inputElement) => {
   return button;
 };
 
+const disableAddButton = (button, inputElement) => {
+  inputElement.addEventListener("keyup", () => {
+    button.disabled = inputElement.value.length === 0;
+  });
+};
+
 /* add title */
 
 titleButton.addEventListener("click", () => {
@@ -72,6 +79,11 @@ titleButton.addEventListener("click", () => {
   });
 
   post.appendChild(wrapper);
+
+  disableAddButton(
+    document.querySelector(".btn-add-element"),
+    document.querySelector(".input")
+  );
 });
 
 /* add paragraph */
@@ -92,6 +104,11 @@ paragraphButton.addEventListener("click", () => {
   });
 
   post.appendChild(wrapper);
+
+  disableAddButton(
+    document.querySelector(".btn-add-element"),
+    document.querySelector(".textarea")
+  );
 });
 
 /* add image */
