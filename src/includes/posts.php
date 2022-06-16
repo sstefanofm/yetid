@@ -8,17 +8,21 @@ $render_post = new RenderPost();
 
 $page_number = (!isset($_GET['page']) || $_GET['page'] <= 0) ? 1 : (int) $_GET['page'];
 
-// max number of results coming from the database (when using "LIMIT $row_start, $max_results")
-$max_results = 5;
 
-// from which row of the sql table the results start (when using "LIMIT $row_start, $max_results")
-$row_start = ($page_number - 1) * $max_results;
+$logged = isset($_SESSION['username']);
 
-$order_by = isset($_SESSION['order_by']) ? $_SESSION['order_by'] : "DESC";
-$render_post->load_posts($row_start, $max_results, $order_by);
-$total_posts = $render_post->count_total_posts();
+if ($logged) {
+  $username = $_SESSION['username'];
+  // max number of results coming from the database (when using "LIMIT $row_start, $max_results")
+  $max_results = 5;
+  // from which row of the sql table the results start (when using "LIMIT $row_start, $max_results")
+  $row_start = ($page_number - 1) * $max_results;
+  $total_posts = $render_post->count_total_posts($username);
+  $max_pages = ceil($total_posts / $max_results);
+  $order_by = isset($_SESSION['order_by']) ? $_SESSION['order_by'] : "DESC";
+  $render_post->load_posts($row_start, $max_results, $order_by, $username);
+}
 
-$max_pages = ceil($total_posts / $max_results);
 
 ?>
 
@@ -43,11 +47,17 @@ $max_pages = ceil($total_posts / $max_results);
 
   <div class="posts-body default-border">
     <?php
-    for ($i = 0; $i < $max_results; $i++) {
-      if (!$render_post->is_empty()) {
-        $render_post->render_next();
-      } else {
-        continue;
+    if (!$logged) {
+    ?>
+      <p class="not-logged">You have to be logged in to see your posts</p>
+    <?php
+    } else {
+      for ($i = 0; $i < $max_results; $i++) {
+        if (!$render_post->is_empty()) {
+          $render_post->render_next();
+        } else {
+          continue;
+        }
       }
     }
     ?>

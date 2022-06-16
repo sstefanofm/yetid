@@ -11,9 +11,9 @@ class RenderPost
     $this->posts_getter = new PostsGetter();
   }
 
-  function load_posts($row_start, $max_results, $order_by)
+  function load_posts($row_start, $max_results, $order_by, $username)
   {
-    $this->posts_getter->load_posts($row_start, $max_results, $order_by);
+    $this->posts_getter->load_posts($row_start, $max_results, $order_by, $username);
   }
 
   function render_next()
@@ -40,8 +40,8 @@ class RenderPost
     return $this->posts_getter->is_empty();
   }
 
-  function count_total_posts()
+  function count_total_posts($username)
   {
-    return $this->posts_getter->count_all();
+    return $this->posts_getter->count_all($username);
   }
 }
