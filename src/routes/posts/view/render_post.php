@@ -11,9 +11,9 @@ class RenderPost
     $this->posts_getter = new PostsGetter();
   }
 
-  function load_posts($row_start, $max_results)
+  function load_posts($row_start, $max_results, $order_by)
   {
-    $this->posts_getter->load_posts($row_start, $max_results);
+    $this->posts_getter->load_posts($row_start, $max_results, $order_by);
   }
 
   function render_next()

@@ -14,7 +14,8 @@ $max_results = 5;
 // from which row of the sql table the results start (when using "LIMIT $row_start, $max_results")
 $row_start = ($page_number - 1) * $max_results;
 
-$render_post->load_posts($row_start, $max_results);
+$order_by = isset($_SESSION['order_by']) ? $_SESSION['order_by'] : "DESC";
+$render_post->load_posts($row_start, $max_results, $order_by);
 $total_posts = $render_post->count_total_posts();
 
 $max_pages = ceil($total_posts / $max_results);
@@ -35,8 +36,8 @@ $max_pages = ceil($total_posts / $max_results);
     <button class="btn btn-order-by">Order by &nbsp;&nbsp;<span class="order-sign">^</span>&nbsp;</button>
 
     <div class="order-by-content hidden">
-      <button class="btn btn-option">Recent</button>
-      <button class="btn btn-option">Most viewed</button>
+      <button class="btn btn-option btn-recent">Most recent</button>
+      <button class="btn btn-option btn-old">Most old</button>
     </div>
   </div>
 
