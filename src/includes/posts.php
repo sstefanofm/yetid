@@ -37,7 +37,14 @@ if ($logged) {
     <?php
     }
     ?>
-    <button class="btn btn-order-by">Order by &nbsp;&nbsp;<span class="order-sign">^</span>&nbsp;</button>
+    <button class="btn btn-order-by">
+      <?php
+      if (strcmp($_SESSION['order_by'], "DESC") === 0) {
+        echo "Recent";
+      } else {
+        echo "Old";
+      }
+      ?> &nbsp;&nbsp;<span class="order-sign">^</span>&nbsp;</button>
 
     <div class="order-by-content hidden">
       <button class="btn btn-option btn-recent">Most recent</button>
