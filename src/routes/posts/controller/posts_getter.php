@@ -13,9 +13,9 @@ class PostsGetter
     $this->post_model = new PostModel();
   }
 
-  function load_posts($row_start, $max_results)
+  function load_posts($row_start, $max_results, $order_by)
   {
-    $this->posts = $this->post_model->get_posts($row_start, $max_results);
+    $this->posts = $this->post_model->get_posts($row_start, $max_results, $order_by);
   }
 
   function get_next()

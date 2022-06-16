@@ -18,9 +18,9 @@ class PostModel
     return true;
   }
 
-  function get_posts($row_start, $max_results)
+  function get_posts($row_start, $max_results, $order_by)
   {
-    return $this->database->get($row_start, $max_results);
+    return $this->database->get($row_start, $max_results, $order_by);
   }
 
   function get_all()
