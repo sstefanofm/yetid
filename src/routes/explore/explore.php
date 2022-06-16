@@ -1,5 +1,24 @@
 <?php
+
 session_start();
+
+include __DIR__ . '/view/render_post.php';
+
+$render_post = new RenderPost();
+
+$page_number = (!isset($_GET['page']) || $_GET['page'] <= 0) ? 1 : (int) $_GET['page'];
+
+// max number of results coming from the database (when using "LIMIT $row_start, $max_results")
+$max_results = 7;
+// from which row of the sql table the results start (when using "LIMIT $row_start, $max_results")
+$row_start = ($page_number - 1) * $max_results;
+$total_posts = $render_post->count_total_posts();
+$max_pages = ceil($total_posts / $max_results);
+
+$order_by = isset($_SESSION['order_by']) ? $_SESSION['order_by'] : "DESC";
+
+$render_post->load_posts($row_start, $max_results, $order_by);
+
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +31,7 @@ include __DIR__ . '/../../includes/head.php';
 <link rel="stylesheet" href="../../css/navbar_styles.css" media="all">
 <link rel="stylesheet" href="../../css/body_styles.css" media="all">
 <link rel="stylesheet" href="../../css/posts_styles.css" media="all">
+<link rel="stylesheet" href="css/explore_styles.css" media="all">
 </head>
 
 <body>
@@ -30,7 +50,14 @@ include __DIR__ . '/../../includes/head.php';
       <?php
       }
       ?>
-      <button class="btn btn-order-by">Order by &nbsp;&nbsp;<span class="order-sign">^</span>&nbsp;</button>
+      <button class="btn btn-order-by">
+        <?php
+        if (strcmp($_SESSION['order_by'], "DESC")) {
+          echo "Old";
+        } else {
+          echo "Recent";
+        }
+        ?> &nbsp;&nbsp;<span class="order-sign">^</span>&nbsp;</button>
 
       <div class="order-by-content hidden">
         <button class="btn btn-option btn-recent">Most recent</button>
@@ -73,7 +100,7 @@ include __DIR__ . '/../../includes/head.php';
 
   <script src="http://localhost/stf/yetid/src/js/orderByButton.js"></script>
   <script src="http://localhost/stf/yetid/src/js/goToCreatePost.js"></script>
-  <script src="http://localhost/stf/yetid/src/js/goToPage.js"></script>
+  <script src="http://localhost/stf/yetid/src/routes/explore/js/goToPage.js"></script>
   <script src="http://localhost/stf/yetid/src/js/goToHome.js"></script>
 
   <?php
