@@ -18,13 +18,13 @@ class PostModel
     return true;
   }
 
-  function get_posts($row_start, $max_results, $order_by)
+  function get_posts($row_start, $max_results, $order_by, $username)
   {
-    return $this->database->get($row_start, $max_results, $order_by);
+    return $this->database->get($row_start, $max_results, $order_by, $username);
   }
 
-  function get_all()
+  function get_all($username)
   {
-    return $this->database->get_all();
+    return $this->database->get_all($username);
   }
 }

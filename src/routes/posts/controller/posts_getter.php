@@ -13,9 +13,9 @@ class PostsGetter
     $this->post_model = new PostModel();
   }
 
-  function load_posts($row_start, $max_results, $order_by)
+  function load_posts($row_start, $max_results, $order_by, $username)
   {
-    $this->posts = $this->post_model->get_posts($row_start, $max_results, $order_by);
+    $this->posts = $this->post_model->get_posts($row_start, $max_results, $order_by, $username);
   }
 
   function get_next()
@@ -33,8 +33,8 @@ class PostsGetter
     return false;
   }
 
-  function count_all()
+  function count_all($username)
   {
-    return mysqli_num_rows($this->post_model->get_all());
+    return mysqli_num_rows($this->post_model->get_all($username));
   }
 }

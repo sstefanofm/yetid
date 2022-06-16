@@ -8,21 +8,21 @@ $render_post = new RenderPost();
 
 $page_number = (!isset($_GET['page']) || $_GET['page'] <= 0) ? 1 : (int) $_GET['page'];
 
-// max number of results coming from the database (when using "LIMIT $row_start, $max_results")
-$max_results = 5;
-
-// from which row of the sql table the results start (when using "LIMIT $row_start, $max_results")
-$row_start = ($page_number - 1) * $max_results;
 
 $logged = isset($_SESSION['username']);
 
 if ($logged) {
+  $username = $_SESSION['username'];
+  // max number of results coming from the database (when using "LIMIT $row_start, $max_results")
+  $max_results = 5;
+  // from which row of the sql table the results start (when using "LIMIT $row_start, $max_results")
+  $row_start = ($page_number - 1) * $max_results;
+  $total_posts = $render_post->count_total_posts($username);
+  $max_pages = ceil($total_posts / $max_results);
   $order_by = isset($_SESSION['order_by']) ? $_SESSION['order_by'] : "DESC";
-  $render_post->load_posts($row_start, $max_results, $order_by);
-  $total_posts = $render_post->count_total_posts();
+  $render_post->load_posts($row_start, $max_results, $order_by, $username);
 }
 
-$max_pages = ceil($total_posts / $max_results);
 
 ?>
 
