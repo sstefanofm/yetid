@@ -19,16 +19,14 @@ const createInput = (type) => {
 
 const createButtons = (inputElement, newElement) => {
   let addButton = document.createElement("button");
-  addButton.classList.add("btn");
-  addButton.classList.add("btn-add-element");
+  addButton.classList.add("btn", "btn-add-element");
   addButton.innerHTML = "Add";
   addButton.disabled = true;
 
   addButton = addButtonFunctionality(addButton, inputElement, newElement);
 
   let cancelButton = document.createElement("button");
-  cancelButton.classList.add("btn");
-  cancelButton.classList.add("btn-cancel-element");
+  cancelButton.classList.add("btn", "btn-cancel-element");
   cancelButton.innerHTML = "Cancel";
 
   cancelButton = cancelButtonFunctionality(cancelButton, inputElement);
@@ -43,9 +41,11 @@ const addButtonFunctionality = (button, inputElement, newElement) => {
 
     createdElement.innerHTML = textElement.value;
     createdElement.classList.add(`${newElement}`);
-    createdElement.classList.add("upload");
 
-    post.appendChild(createdElement);
+    const wrapper = createWrapper();
+    wrapper.appendChild(createdElement);
+
+    post.appendChild(wrapper);
     post.removeChild(textElement.parentNode);
   });
 
@@ -193,15 +193,13 @@ const addNewImage = () => {
 
 const createImageButtons = () => {
   let addButton = document.createElement("button");
-  addButton.classList.add("btn");
-  addButton.classList.add("btn-add-element");
+  addButton.classList.add("btn", "btn-add-element");
   addButton.innerHTML = "Add";
 
   addButton.addEventListener("click", addNewImage);
 
   let cancelButton = document.createElement("button");
-  cancelButton.classList.add("btn");
-  cancelButton.classList.add("btn-cancel-element");
+  cancelButton.classList.add("btn", "btn-cancel-element");
   cancelButton.innerHTML = "Cancel";
 
   cancelButton = cancelButtonFunctionality(cancelButton, "filechooser");
