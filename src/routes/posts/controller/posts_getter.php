@@ -37,4 +37,9 @@ class PostsGetter
   {
     return mysqli_num_rows($this->post_model->get_all($username));
   }
+
+  function get_one($id, $username)
+  {
+    return mysqli_fetch_array($this->post_model->get_one($id, $username));
+  }
 }

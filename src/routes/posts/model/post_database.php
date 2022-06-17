@@ -19,6 +19,11 @@ class PostDatabase extends Database
     return "SELECT * FROM posts WHERE username = '$username';";
   }
 
+  private function select_post_query($id, $username)
+  {
+    return "SELECT * FROM posts WHERE id = '$id' AND username = '$username';";
+  }
+
   function save($username, $post)
   {
     mysqli_query($this->connection, $this->insert_post_query($username, $post));
@@ -32,5 +37,10 @@ class PostDatabase extends Database
   function get_all($username)
   {
     return mysqli_query($this->connection, $this->select_all_query($username));
+  }
+
+  function get_one($id, $username)
+  {
+    return mysqli_query($this->connection, $this->select_post_query($id, $username));
   }
 }
