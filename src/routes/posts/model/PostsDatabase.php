@@ -31,7 +31,7 @@ class PostsDatabase extends Database
 
   function save($username, $post)
   {
-    $this->run_query($this->insert_query($username, $post));
+    mysqli_query($this->connection, $this->insert_query($username, $post));
   }
 
   function get_all($username)
