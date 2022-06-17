@@ -2,9 +2,9 @@
 
 session_start();
 
-include __DIR__ . '/view/render_post.php';
+include __DIR__ . '/view/PostsRenderer.php';
 
-$render_post = new RenderPost();
+$posts_renderer = new PostsRenderer();
 
 $page_number = (!isset($_GET['page']) || $_GET['page'] <= 0) ? 1 : (int) $_GET['page'];
 
@@ -12,12 +12,12 @@ $page_number = (!isset($_GET['page']) || $_GET['page'] <= 0) ? 1 : (int) $_GET['
 $max_results = 7;
 // from which row of the sql table the results start (when using "LIMIT $row_start, $max_results")
 $row_start = ($page_number - 1) * $max_results;
-$total_posts = $render_post->count_total_posts();
+$total_posts = $posts_renderer->count_total_posts();
 $max_pages = ceil($total_posts / $max_results);
 
 $order_by = isset($_SESSION['order_by']) ? $_SESSION['order_by'] : "DESC";
 
-$render_post->load_posts($row_start, $max_results, $order_by);
+$posts_renderer->load_posts($row_start, $max_results, $order_by);
 
 ?>
 
@@ -27,6 +27,7 @@ $render_post->load_posts($row_start, $max_results, $order_by);
 <?php
 include __DIR__ . '/../../includes/head.php';
 ?>
+
 <!-- My styles -->
 <link rel="stylesheet" href="../../css/navbar_styles.css" media="all">
 <link rel="stylesheet" href="../../css/body_styles.css" media="all">
@@ -68,8 +69,8 @@ include __DIR__ . '/../../includes/head.php';
     <div class="posts-body default-border">
       <?php
       for ($i = 0; $i < $max_results; $i++) {
-        if (!$render_post->is_empty()) {
-          $render_post->render_next();
+        if (!$posts_renderer->is_empty()) {
+          $posts_renderer->render_next();
         }
       }
       ?>
@@ -98,10 +99,10 @@ include __DIR__ . '/../../includes/head.php';
     </div>
   </div>
 
-  <script src="http://localhost/stf/yetid/src/js/orderByButton.js"></script>
-  <script src="http://localhost/stf/yetid/src/js/goToCreatePost.js"></script>
-  <script src="http://localhost/stf/yetid/src/routes/explore/js/goToPage.js"></script>
-  <script src="http://localhost/stf/yetid/src/js/goToHome.js"></script>
+  <script src="../../js/orderByButton.js"></script>
+  <script src="../../js/goToCreatePost.js"></script>
+  <script src="../../js/goToHome.js"></script>
+  <script src="js/goToPage.js"></script>
 
   <?php
   include __DIR__ . '/../../includes/scripts.php';

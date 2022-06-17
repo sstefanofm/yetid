@@ -2,12 +2,11 @@
 
 session_start();
 
-include __DIR__ . '/../routes/posts/view/render_post.php';
+include __DIR__ . '/../routes/posts/view/PostsRenderer.php';
 
-$render_post = new RenderPost();
+$posts_renderer = new PostsRenderer();
 
 $page_number = (!isset($_GET['page']) || $_GET['page'] <= 0) ? 1 : (int) $_GET['page'];
-
 
 $logged = isset($_SESSION['username']);
 
@@ -17,12 +16,11 @@ if ($logged) {
   $max_results = 5;
   // from which row of the sql table the results start (when using "LIMIT $row_start, $max_results")
   $row_start = ($page_number - 1) * $max_results;
-  $total_posts = $render_post->count_total_posts($username);
+  $total_posts = $posts_renderer->count_total_posts($username);
   $max_pages = ceil($total_posts / $max_results);
   $order_by = isset($_SESSION['order_by']) ? $_SESSION['order_by'] : "DESC";
-  $render_post->load_posts($row_start, $max_results, $order_by, $username);
+  $posts_renderer->load_posts($row_start, $max_results, $order_by, $username);
 }
-
 
 ?>
 
@@ -39,7 +37,7 @@ if ($logged) {
     ?>
     <button class="btn btn-order-by">
       <?php
-      if (strcmp($_SESSION['order_by'], "DESC") === 0) {
+      if (strcmp($_SESSION['order_by'], "DESC") == 0) {
         echo "Recent";
       } else {
         echo "Old";
@@ -60,8 +58,8 @@ if ($logged) {
     <?php
     } else {
       for ($i = 0; $i < $max_results; $i++) {
-        if (!$render_post->is_empty()) {
-          $render_post->render_next();
+        if (!$posts_renderer->is_empty()) {
+          $posts_renderer->render_next();
         } else {
           continue;
         }
@@ -93,8 +91,8 @@ if ($logged) {
   </div>
 </div>
 
-<script src="http://localhost/stf/yetid/src/js/orderByButton.js"></script>
-<script src="http://localhost/stf/yetid/src/js/goToCreatePost.js"></script>
-<script src="http://localhost/stf/yetid/src/js/goToPage.js"></script>
-<script src="http://localhost/stf/yetid/src/js/goToExplore.js"></script>
+<script src="js/orderByButton.js"></script>
+<script src="js/goToCreatePost.js"></script>
+<script src="js/goToPage.js"></script>
+<script src="js/goToExplore.js"></script>
 <script src="routes/posts/js/clickPost.js"></script>

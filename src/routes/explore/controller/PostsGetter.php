@@ -1,21 +1,21 @@
 <?php
 
-include __DIR__ . '/../model/post_model.php';
+include __DIR__ . '/../model/PostsDatabase.php';
 
 class PostsGetter
 {
-  private $post_model;
+  private $posts_database;
   private $posts;
   private $turns;
 
   function __construct()
   {
-    $this->post_model = new PostModel();
+    $this->posts_database = new PostsDatabase();
   }
 
   function load_posts($row_start, $max_results, $order_by)
   {
-    $this->posts = $this->post_model->get_posts($row_start, $max_results, $order_by);
+    $this->posts = $this->posts_database->get_posts($row_start, $max_results, $order_by);
   }
 
   function get_next()
@@ -35,6 +35,6 @@ class PostsGetter
 
   function count_all()
   {
-    return mysqli_num_rows($this->post_model->get_all());
+    return mysqli_num_rows($this->posts_database->get_all());
   }
 }
