@@ -2,7 +2,7 @@
 
 session_start();
 
-include '../model/user_model.php';
+include __DIR__ . '/../model/UsersDatabase.php';
 include __DIR__ . '/../../../utils/redirect_to.php';
 
 $username = $_POST['username'];
@@ -18,11 +18,11 @@ if (empty($username) || empty($password)) {
   die();
 }
 
-// query user from db
+$users_database = new UsersDatabase();
 
-$user_model = new UserModel($username, $password);
+$db_password = $users_database->get_user_password($username);
 
-if (!$user_model->check_username()) {
+if (!$users_database->check_existing_user($username) || strcmp($password, $db_password) != 0) {
   $_SESSION['success'] = false;
   $_SESSION['message'] = "Invalid username or password.";
   $_SESSION['message_showed'] = false;
@@ -32,25 +32,10 @@ if (!$user_model->check_username()) {
   die();
 }
 
-$user = $user_model->check_credentials();
-
-if ($user_model->check_credentials()) {
-  $_SESSION['success'] = true;
-  $_SESSION['message'] = "You are now logged in.";
-  $_SESSION['message_showed'] = false;
-
-  $_SESSION['logged_in'] = true;
-  $_SESSION['username'] = $username;
-
-  redirect_to_index();
-
-  die();
-}
-
-$_SESSION['success'] = false;
-$_SESSION['message'] = "Invalid username or password.";
+$_SESSION['success'] = true;
+$_SESSION['message'] = "You are now logged in.";
 $_SESSION['message_showed'] = false;
+$_SESSION['logged_in'] = true;
+$_SESSION['username'] = $username;
 
-redirect_to_login();
-
-die();
+redirect_to_index();
