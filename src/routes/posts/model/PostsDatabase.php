@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . '/../../../shared/model/database.php';
+include __DIR__ . '/../../../shared/model/Database.php';
 
 class PostsDatabase extends Database
 {
