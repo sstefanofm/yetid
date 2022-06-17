@@ -1,8 +1,8 @@
 <?php
 
-include __DIR__ . '/../controller/posts_getter.php';
+include __DIR__ . '/../controller/PostsGetter.php';
 
-class RenderPost
+class PostsRenderer
 {
   private $posts_getter;
 
