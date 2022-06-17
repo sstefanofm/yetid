@@ -2,18 +2,15 @@
 
 session_start();
 
-include __DIR__ . '/../model/post_model.php';
-include __DIR__ . '/../../../utils/redirect_to.php';
+include __DIR__ . '/../model/PostsDatabase.php';
 
 $username = $_POST['username'];
 $post_data = $_POST['post'];
 
-$post_model = new PostModel();
+$posts_database = new PostsDatabase();
 
-$post_model->create_post($username, $post_data);
+$posts_database->save($username, $post_data);
 
 $_SESSION['success'] = true;
 $_SESSION['message'] = "Post created successfully!";
 $_SESSION['message_showed'] = false;
-
-echo json_encode($_SESSION);

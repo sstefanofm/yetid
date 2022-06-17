@@ -1,8 +1,8 @@
 <?php
 
-include __DIR__ . '/../controller/posts_getter.php';
+include __DIR__ . '/../controller/PostsGetter.php';
 
-class RenderPost
+class PostsRenderer
 {
   private $posts_getter;
 
@@ -13,7 +13,7 @@ class RenderPost
 
   function load_posts($row_start, $max_results, $order_by, $username)
   {
-    $this->posts_getter->load_posts($row_start, $max_results, $order_by, $username);
+    $this->posts_getter->load_some($row_start, $max_results, $order_by, $username);
   }
 
   function render_next()

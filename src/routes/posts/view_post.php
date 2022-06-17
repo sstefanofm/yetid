@@ -2,13 +2,13 @@
 
 session_start();
 
-include __DIR__ . '/controller/posts_getter.php';
+include __DIR__ . '/controller/PostsGetter.php';
 
 $post_id = $_GET['id'];
 
-$post_getter = new PostsGetter();
+$posts_getter = new PostsGetter();
 
-$post = $post_getter->get_one($post_id, $_SESSION['username']);
+$post = $posts_getter->get_one($post_id, $_SESSION['username']);
 
 ?>
 
