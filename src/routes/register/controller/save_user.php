@@ -2,9 +2,9 @@
 
 session_start();
 
-include 'utils/validate.php';
-include '../model/user_model.php';
+include __DIR__ . '/../model/UsersDatabase.php';
 include __DIR__ . '/../../../utils/redirect_to.php';
+include __DIR__ . '/../../../utils/validate.php';
 
 $username = $_POST['username'];
 $username_min_length = 5;
@@ -40,18 +40,18 @@ if ($password_validation_code != 0 || $confirm_password_validation_code != 0) {
 
 // create user 
 
-$user_model = new UserModel($username, $password, $confirm_password);
+$users_database = new UsersDatabase($username, $password, $confirm_password);
 
-if ($user_model->check_passwords()) {
-  if ($user_model->create_user()) {
-    $_SESSION['success'] = true;
-    $_SESSION['message'] = "User registered successfully!";
-    $_SESSION['message_showed'] = false;
+if (strcmp($password, $confirm_password) == 0) {
+  $users_database->save($username, $password);
 
-    redirect_to_index();
+  $_SESSION['success'] = true;
+  $_SESSION['message'] = "User registered successfully!";
+  $_SESSION['message_showed'] = false;
 
-    die();
-  }
+  redirect_to_index();
+
+  die();
 } else {
   $_SESSION['success'] = false;
   $_SESSION['message'] = "Both passwords do not match.";
@@ -67,5 +67,3 @@ $_SESSION['message'] = "There was an error creating the user.";
 $_SESSION['message_showed'] = false;
 
 redirect_to_register();
-
-die();
