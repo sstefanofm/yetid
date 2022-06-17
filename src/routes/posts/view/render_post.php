@@ -20,7 +20,7 @@ class RenderPost
   {
     $post = $this->posts_getter->get_next();
 ?>
-    <div class="post default-border">
+    <div class="post default-border" id="<?php echo $post['id'] ?>">
       <div class="post-user">
         <?php
         echo $post['username'];

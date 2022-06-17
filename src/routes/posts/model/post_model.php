@@ -27,4 +27,9 @@ class PostModel
   {
     return $this->database->get_all($username);
   }
+
+  function get_one($id, $username)
+  {
+    return $this->database->get_one($id, $username);
+  }
 }
