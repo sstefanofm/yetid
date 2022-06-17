@@ -53,10 +53,10 @@ include __DIR__ . '/../../includes/head.php';
       ?>
       <button class="btn btn-order-by">
         <?php
-        if (strcmp($_SESSION['order_by'], "DESC")) {
-          echo "Old";
-        } else {
+        if (strcmp($_SESSION['order_by'], "DESC") == 0 || !isset($_SESSION['order_by'])) {
           echo "Recent";
+        } else {
+          echo "Old";
         }
         ?> &nbsp;&nbsp;<span class="order-sign">^</span>&nbsp;</button>
 

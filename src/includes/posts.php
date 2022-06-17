@@ -37,7 +37,7 @@ if ($logged) {
     ?>
     <button class="btn btn-order-by">
       <?php
-      if (strcmp($_SESSION['order_by'], "DESC") == 0) {
+      if (strcmp($_SESSION['order_by'], "DESC") == 0 || !isset($_SESSION['order_by'])) {
         echo "Recent";
       } else {
         echo "Old";
@@ -95,4 +95,4 @@ if ($logged) {
 <script src="js/goToCreatePost.js"></script>
 <script src="js/goToPage.js"></script>
 <script src="js/goToExplore.js"></script>
-<script src="routes/posts/js/clickPost.js"></script>
+<script src="js/clickPost.js"></script>
