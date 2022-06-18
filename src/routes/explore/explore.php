@@ -12,6 +12,7 @@ $page_number = (!isset($_GET['page']) || $_GET['page'] <= 0) ? 1 : (int) $_GET['
 $max_results = 7;
 // from which row of the sql table the results start (when using "LIMIT $row_start, $max_results")
 $row_start = ($page_number - 1) * $max_results;
+
 $total_posts = $posts_renderer->count_total_posts();
 $max_pages = ceil($total_posts / $max_results);
 
