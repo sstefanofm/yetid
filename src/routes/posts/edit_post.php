@@ -33,7 +33,7 @@ include __DIR__ . '/../../includes/head.php';
     <div class="container post-header">
       <button class="btn btn-secondary btn-back"><i class="bi bi-arrow-left"></i></button>
       <div class="title-container">
-        <input class="post-title form-control" type="text" placeholder="Title goes here" value="<?php echo $post['title'] ?>"></input>
+        <input class="post-title form-control" type="text" placeholder="Title goes here" value="<?php echo $post['title'] ?>" disabled></input>
       </div>
       <div class="options">
         <button class="btn btn-warning btn-edit"><i class="bi bi-pencil"></i></button>

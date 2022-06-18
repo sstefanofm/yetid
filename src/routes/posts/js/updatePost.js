@@ -1,4 +1,10 @@
-const updateButton = document.querySelector(".btn-update");
+// create confirm edit button with its icon
+const updateButton = document.createElement("button");
+updateButton.classList.add("btn", "btn-warning", "btn-update");
+createButtonIcon("check", updateButton, "Confirm edit");
+
+// append button to the post footer
+document.querySelector(".post-footer").append(updateButton);
 
 updateButton.addEventListener("click", () => {
   const id = new URLSearchParams(window.location.search).get("id");
