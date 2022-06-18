@@ -74,3 +74,9 @@
   height: 7em;
   color: #565656;
 }
+
+/* post footer */
+
+.post-footer {
+  padding-bottom: 1em;
+}

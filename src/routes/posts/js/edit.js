@@ -54,6 +54,20 @@ const createDeleteButton = (wrapper) => {
 };
 
 editButton.addEventListener("click", () => {
+  // create confirm edit button with its icon
+  const updateButton = document.createElement("button");
+  updateButton.classList.add("btn", "btn-warning", "btn-update");
+  const checkIcon = document.createElement("i");
+  checkIcon.classList.add("bi", "bi-check");
+  updateButton.appendChild(checkIcon);
+  updateButton.innerHTML += "Confirm edit";
+  // append it to the post footer
+  document.querySelector(".post-footer").appendChild(updateButton);
+  // the functionality of this button is updatePost.js file
+  const updatePostScript = document.createElement("script");
+  updatePostScript.src = "js/updatePost.js";
+  document.querySelector("body").appendChild(updatePostScript);
+
   // title elements
   document.querySelectorAll(".h3").forEach((h3) => {
     // create an input with the same value as the h3
