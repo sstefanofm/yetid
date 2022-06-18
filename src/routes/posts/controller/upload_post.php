@@ -4,12 +4,13 @@ session_start();
 
 include __DIR__ . '/../model/PostsDatabase.php';
 
-$username = $_POST['username'];
-$post_data = $_POST['post'];
+$title = $_POST['title'];
+$content = $_POST['content'];
+$username = $_SESSION['username'];
 
 $posts_database = new PostsDatabase();
 
-$posts_database->save($username, $post_data);
+$posts_database->save($title, $username, $content);
 
 $_SESSION['success'] = true;
 $_SESSION['message'] = "Post created successfully!";

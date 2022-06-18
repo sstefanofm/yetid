@@ -9,9 +9,9 @@ class PostsDatabase extends Database
     return $this->connection->query($query);
   }
 
-  private function insert_query($username, $post)
+  private function insert_query($title, $username, $content)
   {
-    return "INSERT INTO posts (username, post) VALUES ('$username', '$post');";
+    return "INSERT INTO posts (title, username, content) VALUES ('$title', '$username', '$content');";
   }
 
   private function select_all_query($username)
@@ -29,9 +29,9 @@ class PostsDatabase extends Database
     return "SELECT * FROM posts WHERE id = '$id' AND username = '$username';";
   }
 
-  function save($username, $post)
+  function save($title, $username, $content)
   {
-    mysqli_query($this->connection, $this->insert_query($username, $post));
+    mysqli_query($this->connection, $this->insert_query($title, $username, $content));
   }
 
   function get_all($username)
