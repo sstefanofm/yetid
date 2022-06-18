@@ -33,9 +33,6 @@ include __DIR__ . '/../../utils/renderer.php';
       <button class="btn btn-colors btn-explore">Explore</button>
       <button class="btn btn-add"><span class="add-sign">&nbsp;+&nbsp;</span>ADD</button>
 
-      <!-- Using this to get the user id to upload the post to the database -->
-      <p class="hidden"><?php echo $_SESSION['username'] ?></p>
-
       <div class="add-content hidden">
         <button class="btn btn-subtitle">Subtitle</button>
         <button class="btn btn-paragraph">Paragraph</button>
@@ -45,7 +42,7 @@ include __DIR__ . '/../../utils/renderer.php';
 
     <div class="container post-header">
       <label class="title-label form-label" for="title">Add a title to your post</label>
-      <input class="title input form-control" type="text" name="title" placeholder="The title goes here">
+      <input class="post-title input form-control" type="text" name="title" placeholder="The title goes here">
       <hr>
     </div>
 
