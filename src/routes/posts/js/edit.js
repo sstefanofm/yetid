@@ -3,20 +3,18 @@ const editButton = document.querySelector(".btn-edit");
 editButton.addEventListener("click", () => {
   // disable edit Button permanently
   editButton.disabled = true;
+  // enable title edit permanently
+  document.querySelector(".post-title").disabled = false;
 
-  // create confirm edit button with its icon
-  const updateButton = document.createElement("button");
-  updateButton.classList.add("btn", "btn-warning", "btn-update");
-  const checkIcon = document.createElement("i");
-  checkIcon.classList.add("bi", "bi-check");
-  updateButton.appendChild(checkIcon);
-  updateButton.innerHTML += "Confirm edit";
-  // append it to the post footer
-  document.querySelector(".post-footer").appendChild(updateButton);
-  // the functionality of this button is updatePost.js file
+  // confirm update button
   const updatePostScript = document.createElement("script");
   updatePostScript.src = "js/updatePost.js";
-  document.querySelector("body").appendChild(updatePostScript);
+  // cancel update button
+  const cancelUpdateScript = document.createElement("script");
+  cancelUpdateScript.src = "js/cancelUpdate.js";
+
+  // append scripts to the body
+  document.querySelector("body").append(updatePostScript, cancelUpdateScript);
 
   // title elements
   document.querySelectorAll(".h3").forEach((h3) => {
@@ -142,4 +140,11 @@ const createDeleteButton = (wrapper) => {
   });
 
   return deleteButton;
+};
+
+const createButtonIcon = (name, button, text) => {
+  const icon = document.createElement("i");
+  icon.classList.add("bi", `bi-${name}`);
+  button.appendChild(icon);
+  button.innerHTML += `${text}`;
 };
