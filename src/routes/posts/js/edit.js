@@ -1,6 +1,9 @@
 const editButton = document.querySelector(".btn-edit");
 
 editButton.addEventListener("click", () => {
+  // disable edit Button permanently
+  editButton.disabled = true;
+
   // create confirm edit button with its icon
   const updateButton = document.createElement("button");
   updateButton.classList.add("btn", "btn-warning", "btn-update");
