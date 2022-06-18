@@ -1,58 +1,5 @@
 const editButton = document.querySelector(".btn-edit");
 
-const createInput = (name, value) => {
-  const input = document.createElement(`${name}`);
-  input.type = "text";
-  input.classList.add(`${name}`);
-  input.value = `${value}`;
-
-  return input;
-};
-
-const wrap = (wrapper, wrapped) => {
-  wrapper.appendChild(wrapped);
-
-  return wrapper;
-};
-
-const createCancelButton = (
-  oldValue,
-  wrapper,
-  createdElement,
-  removedElement
-) => {
-  const cancelButton = document.createElement("button");
-  cancelButton.classList.add("btn", "btn-cancel-edit");
-  cancelButton.innerHTML = "Cancel";
-  // functionality
-  cancelButton.addEventListener("click", () => {
-    // create an h3 with the old text (h3 innerHTML)
-    const oldElement = document.createElement(`${createdElement}`);
-    oldElement.classList.add(`${createdElement}`);
-    oldElement.innerHTML = oldValue;
-    // append it to the elementWrapper and delete the input wrapper
-    wrapper.appendChild(oldElement);
-    wrapper.removeChild(removedElement);
-  });
-
-  return cancelButton;
-};
-
-const createDeleteButton = (wrapper) => {
-  const deleteButton = document.createElement("button");
-  deleteButton.classList.add("btn", "btn-delete-element", "btn-danger");
-  const trashCan = document.createElement("i");
-  trashCan.classList.add("bi", "bi-trash");
-  deleteButton.appendChild(trashCan);
-  // functionality
-  deleteButton.addEventListener("click", () => {
-    // delete element wrapper
-    wrapper.remove(wrapper);
-  });
-
-  return deleteButton;
-};
-
 editButton.addEventListener("click", () => {
   // create confirm edit button with its icon
   const updateButton = document.createElement("button");
@@ -138,3 +85,58 @@ editButton.addEventListener("click", () => {
     elementWrapper.removeChild(p);
   });
 });
+
+/* Functions */
+
+const createInput = (name, value) => {
+  const input = document.createElement(`${name}`);
+  input.type = "text";
+  input.classList.add(`${name}`);
+  input.value = `${value}`;
+
+  return input;
+};
+
+const wrap = (wrapper, wrapped) => {
+  wrapper.appendChild(wrapped);
+
+  return wrapper;
+};
+
+const createCancelButton = (
+  oldValue,
+  wrapper,
+  createdElement,
+  removedElement
+) => {
+  const cancelButton = document.createElement("button");
+  cancelButton.classList.add("btn", "btn-cancel-edit");
+  cancelButton.innerHTML = "Cancel";
+  // functionality
+  cancelButton.addEventListener("click", () => {
+    // create an h3 with the old text (h3 innerHTML)
+    const oldElement = document.createElement(`${createdElement}`);
+    oldElement.classList.add(`${createdElement}`);
+    oldElement.innerHTML = oldValue;
+    // append it to the elementWrapper and delete the input wrapper
+    wrapper.appendChild(oldElement);
+    wrapper.removeChild(removedElement);
+  });
+
+  return cancelButton;
+};
+
+const createDeleteButton = (wrapper) => {
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("btn", "btn-delete-element", "btn-danger");
+  const trashCan = document.createElement("i");
+  trashCan.classList.add("bi", "bi-trash");
+  deleteButton.appendChild(trashCan);
+  // functionality
+  deleteButton.addEventListener("click", () => {
+    // delete element wrapper
+    wrapper.remove(wrapper);
+  });
+
+  return deleteButton;
+};
