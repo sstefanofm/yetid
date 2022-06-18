@@ -25,8 +25,7 @@ subtitleButton.addEventListener("click", () => {
   const cancelButton = createCancelButton();
 
   // create a wrapper to wrap all the elements of the input
-  const inputWrapper = document.createElement("div");
-  inputWrapper.append(input, addButton, cancelButton);
+  const inputWrapper = createInputWrapper(input, addButton, cancelButton);
 
   // create the main wrapper
   const elementWrapper = document.createElement("div");
@@ -51,8 +50,8 @@ paragraphButton.addEventListener("click", () => {
 
   const cancelButton = createCancelButton();
 
-  const textareaWrapper = document.createElement("div");
-  textareaWrapper.append(textarea, addButton, cancelButton);
+  const textareaWrapper = createInputWrapper(textarea, addButton, cancelButton);
+
   const elementWrapper = document.createElement("div");
   elementWrapper.appendChild(textareaWrapper);
 
@@ -95,4 +94,12 @@ const createCancelButton = () => {
   });
 
   return button;
+};
+
+const createInputWrapper = (input, addButton, cancelButton) => {
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("input-wrapper");
+  wrapper.append(input, addButton, cancelButton);
+
+  return wrapper;
 };

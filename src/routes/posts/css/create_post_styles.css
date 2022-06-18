@@ -77,13 +77,25 @@
 
 .post-title {
   font-style: italic;
+  font-size: 1.6em !important;
 }
 
 .post-title:focus {
   font-style: initial;
 }
 
+/* general */
+
+.input-wrapper {
+  margin: 1em 1em 1em 1em;
+}
+
 /* Add element */
+
+.btn-add-element,
+.btn-cancel-element {
+  margin-top: 5px;
+}
 
 .btn-add-element {
   border: 1px solid #9acc72;
@@ -94,7 +106,7 @@
   border: 1px solid #ac727b;
 }
 
-/* Add title */
+/* Add subtitle */
 
 .input {
   width: 100%;
@@ -107,7 +119,8 @@
 }
 
 .h3 {
-  font-size: 1.7em;
+  margin: 1em 1em 0.5em 1em;
+  font-size: 1.3em;
 }
 
 /* Add paragraph */
@@ -121,6 +134,10 @@
   resize: none;
   height: 7em;
   color: #565656;
+}
+
+.p {
+  margin: 0.3em 1em 1em 1em;
 }
 
 /* Add image */
