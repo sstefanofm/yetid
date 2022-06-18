@@ -1,220 +1,98 @@
-const post = document.querySelector(".post");
-const titleButton = document.querySelector(".btn-title");
+const post = document.querySelector(".post-body");
+const subtitleButton = document.querySelector(".btn-subtitle");
 const paragraphButton = document.querySelector(".btn-paragraph");
-const imageButton = document.querySelector(".btn-image");
 
-/* general */
+subtitleButton.addEventListener("click", () => {
+  // create an input
+  const input = createInput("input", "Subtitle");
 
-const createWrapper = () => {
-  return document.createElement("div");
-};
-
-const createInput = (type) => {
-  let newInput = document.createElement("input");
-  newInput.type = `${type}`;
-  newInput.classList.add("input");
-
-  return newInput;
-};
-
-const createButtons = (inputElement, newElement) => {
-  let addButton = document.createElement("button");
-  addButton.classList.add("btn", "btn-add-element");
-  addButton.innerHTML = "Add";
-  addButton.disabled = true;
-
-  addButton = addButtonFunctionality(addButton, inputElement, newElement);
-
-  let cancelButton = document.createElement("button");
-  cancelButton.classList.add("btn", "btn-cancel-element");
-  cancelButton.innerHTML = "Cancel";
-
-  cancelButton = cancelButtonFunctionality(cancelButton, inputElement);
-
-  return [addButton, cancelButton];
-};
-
-const addButtonFunctionality = (button, inputElement, newElement) => {
-  button.addEventListener("click", () => {
-    const textElement = document.querySelector(`.${inputElement}`);
-    let createdElement = document.createElement(`${newElement}`);
-
-    createdElement.innerHTML = textElement.value;
-    createdElement.classList.add(`${newElement}`);
-
-    const wrapper = createWrapper();
-    wrapper.appendChild(createdElement);
-
-    post.appendChild(wrapper);
-    post.removeChild(textElement.parentNode);
+  // create add button
+  const addButton = createAddButton();
+  // functionality
+  addButton.addEventListener("click", () => {
+    // create a h3
+    const newH3 = document.createElement("h3");
+    newH3.classList.add("h3");
+    // the inner text is the input's value
+    newH3.innerHTML = input.value;
+    // append it to the element wrapper
+    addButton.parentNode.parentNode.appendChild(newH3);
+    // delete the input wrapper
+    addButton.parentNode.remove(addButton.parentNode);
   });
 
-  return button;
-};
+  // create cancel button
+  const cancelButton = createCancelButton();
 
-const cancelButtonFunctionality = (button, inputElement) => {
-  button.addEventListener("click", () => {
-    const textElement = document.querySelector(`.${inputElement}`);
+  // create a wrapper to wrap all the elements of the input
+  const inputWrapper = document.createElement("div");
+  inputWrapper.append(input, addButton, cancelButton);
 
-    post.removeChild(textElement.parentNode);
-  });
+  // create the main wrapper
+  const elementWrapper = document.createElement("div");
 
-  return button;
-};
+  elementWrapper.appendChild(inputWrapper);
 
-const disableAddButton = (button, inputElement) => {
-  inputElement.addEventListener("keyup", () => {
-    button.disabled = inputElement.value.length === 0;
-  });
-};
-
-/* add title */
-
-titleButton.addEventListener("click", () => {
-  let wrapper = createWrapper();
-
-  wrapper.appendChild(createInput("text"));
-  createButtons("input", "h3").forEach((button) => {
-    wrapper.appendChild(button);
-  });
-
-  post.appendChild(wrapper);
-
-  disableAddButton(
-    document.querySelector(".btn-add-element"),
-    document.querySelector(".input")
-  );
+  post.appendChild(elementWrapper);
 });
 
-/* add paragraph */
-
-const createTextArea = () => {
-  let textArea = document.createElement("textarea");
-  textArea.classList.add("textarea");
-
-  return textArea;
-};
-
+// same logic as the subtitle button
 paragraphButton.addEventListener("click", () => {
-  let wrapper = createWrapper();
+  const textarea = createInput("textarea", "Add text here...");
 
-  wrapper.appendChild(createTextArea());
-  createButtons("textarea", "p").forEach((button) => {
-    wrapper.appendChild(button);
+  const addButton = createAddButton();
+  addButton.addEventListener("click", () => {
+    const newP = document.createElement("p");
+    newP.classList.add("p");
+    newP.innerHTML = textarea.value;
+    addButton.parentNode.parentNode.appendChild(newP);
+    addButton.parentNode.remove(addButton.parentNode);
   });
 
-  post.appendChild(wrapper);
+  const cancelButton = createCancelButton();
 
-  disableAddButton(
-    document.querySelector(".btn-add-element"),
-    document.querySelector(".textarea")
-  );
+  const textareaWrapper = document.createElement("div");
+  textareaWrapper.append(textarea, addButton, cancelButton);
+  const elementWrapper = document.createElement("div");
+  elementWrapper.appendChild(textareaWrapper);
+
+  post.appendChild(elementWrapper);
 });
 
-/* add image */
+/* Functions */
 
-const fileTypes = [
-  "image/gif",
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "image/jpg",
-];
+const createInput = (name, placeholder) => {
+  const input = document.createElement(`${name}`);
+  input.type = "text";
+  input.classList.add(`${name}`, "form-control");
+  input.placeholder = `${placeholder}`;
 
-const validFileType = (file) => {
-  return fileTypes.includes(file.type);
+  return input;
 };
 
-const createFileInput = () => {
-  let newInput = createInput("file");
-  newInput.classList.add("filechooser");
-  newInput.accept = ".jpg, .jpeg, .png, .gif, .webp";
+const createAddButton = () => {
+  const button = document.createElement("button");
+  button.classList.add("btn", "btn-add-element");
+  const checkIcon = document.createElement("i");
+  checkIcon.classList.add("bi", "bi-check");
+  button.appendChild(checkIcon);
+  button.innerHTML += "Add";
 
-  newInput.addEventListener("input", updateImageDisplay);
-
-  return newInput;
+  return button;
 };
 
-const createDefaultText = () => {
-  let defaultText = document.createElement("p");
-  defaultText.innerHTML = "No image currently selected to upload";
-
-  return defaultText;
-};
-
-const createImagePreview = () => {
-  let imagePreview = createWrapper();
-  imagePreview.classList.add("image-preview");
-  imagePreview.appendChild(createDefaultText());
-
-  return imagePreview;
-};
-
-const createImage = (file) => {
-  let image = document.createElement("img");
-  image.src = URL.createObjectURL(file);
-  image.classList.add("image");
-
-  return image;
-};
-
-const updateImageDisplay = () => {
-  let preview = document.querySelector(".image-preview");
-  const filechooser = document.querySelector(".filechooser");
-
-  preview.removeChild(preview.firstChild);
-
-  const selectedFiles = filechooser.files;
-
-  if (selectedFiles.length === 0) {
-    preview.appendChild(createDefaultText());
-    return;
-  }
-
-  for (const file of selectedFiles) {
-    if (validFileType(file)) {
-      preview.appendChild(createImage(file));
-      return;
-    }
-    preview.appendChild(createDefaultText());
-    return;
-  }
-};
-
-const addNewImage = () => {
-  let filechooser = document.querySelector(".filechooser");
-
-  for (const file of filechooser.files) {
-    post.appendChild(createImage(file));
-  }
-
-  post.removeChild(filechooser.parentNode);
-};
-
-const createImageButtons = () => {
-  let addButton = document.createElement("button");
-  addButton.classList.add("btn", "btn-add-element");
-  addButton.innerHTML = "Add";
-
-  addButton.addEventListener("click", addNewImage);
-
-  let cancelButton = document.createElement("button");
-  cancelButton.classList.add("btn", "btn-cancel-element");
-  cancelButton.innerHTML = "Cancel";
-
-  cancelButton = cancelButtonFunctionality(cancelButton, "filechooser");
-
-  return [addButton, cancelButton];
-};
-
-imageButton.addEventListener("click", () => {
-  let wrapper = createWrapper();
-
-  wrapper.appendChild(createImagePreview());
-  wrapper.appendChild(createFileInput());
-  createImageButtons().forEach((button) => {
-    wrapper.appendChild(button);
+const createCancelButton = () => {
+  const button = document.createElement("button");
+  button.classList.add("btn", "btn-cancel-element");
+  const xIcon = document.createElement("i");
+  xIcon.classList.add("bi", "bi-x");
+  button.appendChild(xIcon);
+  button.innerHTML += "Cancel";
+  // functionality
+  button.addEventListener("click", () => {
+    // delete input wrapper's parent node
+    button.parentNode.parentNode.remove(button.parentNode.parentNode);
   });
 
-  post.appendChild(wrapper);
-});
+  return button;
+};
