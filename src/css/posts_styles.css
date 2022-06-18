@@ -98,6 +98,10 @@
   float: right;
 }
 
+.post-title {
+  font-size: 1.5em;
+}
+
 /* posts footer */
 
 .posts-footer {
