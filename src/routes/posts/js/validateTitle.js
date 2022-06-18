@@ -1,4 +1,4 @@
-const postTitle = document.querySelector(".post-title");
+const postTitle = document.querySelector(".input-title");
 const errorP = document.querySelector("p.error");
 const btnUpload = document.querySelector(".btn-upload");
 
