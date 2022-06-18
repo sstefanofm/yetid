@@ -43,16 +43,18 @@ include __DIR__ . '/../../utils/renderer.php';
     <div class="container post-header">
       <label class="title-label form-label" for="title">Add a title to your post</label>
       <input class="post-title input form-control" type="text" name="title" placeholder="The title goes here">
+      <p class="error hidden">Title must have 5 or more characters</p>
       <hr>
     </div>
 
     <div class="post-body"></div>
 
     <div class="container container-upload">
-      <button class="btn btn-success btn-upload">Upload</button>
+      <button class="btn btn-success btn-upload" disabled>Upload</button>
     </div>
   </div>
 
+  <script src="js/validateTitle.js"></script>
   <script src="js/addButtonToggle.js"></script>
   <script src="js/addElements.js"></script>
   <script src="js/uploadPost.js"></script>
