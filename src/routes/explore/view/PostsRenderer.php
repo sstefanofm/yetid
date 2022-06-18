@@ -26,9 +26,9 @@ class PostsRenderer
         echo $post['username'];
         ?>
       </div>
-      <div class="post-content">
+      <div class="post-title">
         <?php
-        echo $post['post'];
+        echo $post['title'];
         ?>
       </div>
     </div>
