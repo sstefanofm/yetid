@@ -56,6 +56,7 @@ include __DIR__ . '/../../includes/head.php';
 
   <script src="js/goBack.js"></script>
   <script src="js/edit.js"></script>
+  <script src="js/deletePost.js"></script>
 </body>
 
 </html>
