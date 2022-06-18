@@ -104,6 +104,10 @@
   margin: 1em 1em 1em 1em;
 }
 
+.input-error {
+  border: 2px solid #bf1f33 !important;
+}
+
 /* Add element */
 
 .btn-add-element,
@@ -167,5 +171,5 @@
 }
 
 .btn-upload:hover {
-  box-shadow: 0px 0px 9px #9f1f33;
+  box-shadow: 0px 0px 9px #565656;
 }

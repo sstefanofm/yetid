@@ -49,11 +49,10 @@ include __DIR__ . '/../../utils/renderer.php';
 
     <div class="post-body">
       <div class="input-wrapper">
-        <input class="input form-control" type="text" placeholder="Add a subtitle" required>
-        <p class="error hidden">Subtitles must have 5 or more characters</p>
+        <input class="input input-subtitle form-control" type="text" placeholder="Add a subtitle" required>
       </div>
       <div class="input-wrapper">
-        <textarea class="textarea form-control" placeholder="Add your content here..." required></textarea>
+        <textarea class="textarea textarea-content form-control" placeholder="Add your content here..." required></textarea>
       </div>
     </div>
 
@@ -63,7 +62,6 @@ include __DIR__ . '/../../utils/renderer.php';
   </div>
 
   <script src="js/validateTitle.js"></script>
-  <script src="js/validateSubtitle.js"></script>
   <script src="js/addButtonToggle.js"></script>
   <script src="js/addElements.js"></script>
   <script src="js/uploadPost.js"></script>
