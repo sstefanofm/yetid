@@ -47,6 +47,11 @@ include __DIR__ . '/../../includes/head.php';
     <div class="container post-body">
       <?php echo $post['post'] ?>
     </div>
+
+    <div class="container post-footer">
+      <hr>
+
+    </div>
   </div>
 
   <script src="js/goBack.js"></script>
