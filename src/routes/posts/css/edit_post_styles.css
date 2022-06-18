@@ -19,21 +19,32 @@
   float: left;
 }
 
-.title {
+.title-container {
   float: left;
   margin-top: 1em;
   margin-left: 1em;
+  width: 70%;
 }
 
 .options {
   float: right;
   margin-top: 1em;
+  top: 0 !important;
+}
+
+.post-title {
+  font-size: 1.8em;
+  margin-top: -9px;
 }
 
 /* post body */
 
 .post-body {
   padding-bottom: 1em;
+}
+
+.h3 {
+  font-size: 1.3em;
 }
 
 /* created elements */

@@ -32,8 +32,8 @@ include __DIR__ . '/../../includes/head.php';
   <div class="container post-container default-border">
     <div class="container post-header">
       <button class="btn btn-secondary btn-back"><i class="bi bi-arrow-left"></i></button>
-      <div class="title">
-        <h2><?php echo $post['title'] ?></h2>
+      <div class="title-container">
+        <input class="post-title form-control" type="text" placeholder="Title goes here" value="<?php echo $post['title'] ?>"></input>
       </div>
       <div class="options">
         <button class="btn btn-warning btn-edit"><i class="bi bi-pencil"></i></button>
@@ -45,7 +45,7 @@ include __DIR__ . '/../../includes/head.php';
     </div>
 
     <div class="container post-body">
-      <?php echo $post['post'] ?>
+      <?php echo $post['content'] ?>
     </div>
 
     <div class="container post-footer">
