@@ -49,7 +49,7 @@ include __DIR__ . '/../../utils/renderer.php';
 
     <div class="post-body">
       <div class="input-wrapper">
-        <input class="input input-subtitle form-control" type="text" placeholder="Add a subtitle" required>
+        <input class="input-subtitle form-control" type="text" placeholder="Add a subtitle" required>
       </div>
       <div class="input-wrapper">
         <textarea class="textarea textarea-content form-control" placeholder="Add your content here..." required></textarea>
