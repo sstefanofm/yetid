@@ -19,3 +19,8 @@ function redirect_to_register()
 {
   redirect_to("http://localhost/stf/yetid/src/routes/register/register.php");
 }
+
+function redirect_to_edit($id)
+{
+  redirect_to("http://localhost/stf/yetid/src/routes/posts/edit_post.php?id=$id");
+}
