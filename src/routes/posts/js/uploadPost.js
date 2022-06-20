@@ -60,6 +60,35 @@ uploadButton.addEventListener("click", () => {
     return;
   }
 
+  // user-added subtitles validation
+  //
+  let inputsAreValid = true;
+
+  let subtitles = document.querySelectorAll(".input");
+
+  subtitles.forEach((sub) => {
+    if (sub.value.length < 5) {
+      inputsAreValid = false;
+      return;
+    }
+    inputsAreValid = true;
+  });
+
+  let paragraphs = document.querySelectorAll(".textarea");
+
+  paragraphs.forEach((paragraph) => {
+    if (paragraph.value.length < 15) {
+      inputsAreValid = false;
+      return;
+    }
+    inputsAreValid = true;
+  });
+
+  if (!inputsAreValid) {
+    alert("All input fields must be added (or canceled).");
+    return;
+  }
+
   let formData = new FormData();
   // postTitle already been declared at validateTitle.js
   formData.append("title", postTitle.value.trim());
