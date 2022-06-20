@@ -26,11 +26,11 @@ class PostsRenderer
         echo $post['username'];
         ?>
       </div>
-      <div class="post-title">
+      <span class="post-title" id="<?php echo $post['id'] ?>">
         <?php
         echo $post['title'];
         ?>
-      </div>
+      </span>
     </div>
 <?php
   }

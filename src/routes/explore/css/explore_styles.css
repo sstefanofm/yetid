@@ -5,3 +5,12 @@
 .btn-explore {
   background-color: #9f1f33;
 }
+
+.post {
+  cursor: default !important;
+}
+
+.post-title:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

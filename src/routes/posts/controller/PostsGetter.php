@@ -42,4 +42,9 @@ class PostsGetter
   {
     return mysqli_fetch_array($this->posts_database->get_one($id, $username));
   }
+
+  function get_by_id($id)
+  {
+    return mysqli_fetch_array($this->posts_database->get_by_id($id));
+  }
 }

@@ -1,0 +1,46 @@
+.post-container {
+  background-color: #f4f4f4;
+  margin-top: 2em;
+}
+
+.default-border {
+  border: 1px solid #c4c4c4;
+  border-radius: 6px;
+}
+
+/* post header */
+
+.post-header {
+  height: 4.5em;
+}
+
+.btn-back {
+  margin-top: 1em;
+  float: left;
+}
+
+.title-container {
+  float: left;
+  margin-top: 1em;
+  margin-left: 1em;
+  width: 70%;
+}
+
+.post-title {
+  font-size: 1.9em;
+}
+
+/* post body */
+
+.post-body {
+  padding-bottom: 1em;
+}
+
+.h3 {
+  padding-left: 0.5em;
+  font-size: 1.5em;
+}
+
+.p {
+  padding-left: 1em;
+}

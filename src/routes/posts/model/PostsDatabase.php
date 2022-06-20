@@ -24,6 +24,11 @@ class PostsDatabase extends Database
     return "SELECT * FROM posts WHERE id = '$id' AND username = '$username';";
   }
 
+  private function select_by_id_query($id)
+  {
+    return "SELECT * FROM posts WHERE id = '$id';";
+  }
+
   function get_all($username)
   {
     return $this->run_query($this->select_all_query($username));
@@ -37,5 +42,10 @@ class PostsDatabase extends Database
   function get_one($id, $username)
   {
     return $this->run_query($this->select_one_query($id, $username));
+  }
+
+  function get_by_id($id)
+  {
+    return $this->run_query($this->select_by_id_query($id));
   }
 }

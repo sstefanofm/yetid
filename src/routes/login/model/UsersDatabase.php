@@ -29,4 +29,10 @@ class UsersDatabase extends Database
     $result = $this->run_query($this->select_user_query($username));
     return mysqli_fetch_assoc($result)['password'];
   }
+
+  function get_user_role($username)
+  {
+    $result = $this->run_query($this->select_user_query($username));
+    return mysqli_fetch_assoc($result)['role'];
+  }
 }

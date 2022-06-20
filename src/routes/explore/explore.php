@@ -104,6 +104,7 @@ include __DIR__ . '/../../includes/head.php';
   <script src="../../js/goToCreatePost.js"></script>
   <script src="../../js/goToHome.js"></script>
   <script src="js/goToPage.js"></script>
+  <script src="js/clickPost.js"></script>
 
   <?php
   include __DIR__ . '/../../includes/scripts.php';
