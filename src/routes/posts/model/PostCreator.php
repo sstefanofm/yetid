@@ -4,13 +4,13 @@ include __DIR__ . '/../../../shared/model/Database.php';
 
 class PostCreator extends Database
 {
-  private function insert_query($title, $content, $username)
+  private function insert_query($title, $content, $username, $main_subtitle)
   {
-    return "INSERT INTO posts (title, content, username) VALUES ('$title', '$content', '$username')";
+    return "INSERT INTO posts (title, content, username, main_subtitle) VALUES ('$title', '$content', '$username', '$main_subtitle')";
   }
 
-  function run($title, $content, $username)
+  function run($title, $content, $username, $main_subtitle)
   {
-    return $this->connection->query($this->insert_query($title, $content, $username));
+    return $this->connection->query($this->insert_query($title, $content, $username, $main_subtitle));
   }
 }
