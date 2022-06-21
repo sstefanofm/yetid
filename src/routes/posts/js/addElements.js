@@ -1,4 +1,4 @@
-const post = document.querySelector(".post-body");
+const post = document.querySelector(".post-content");
 const subtitleButton = document.querySelector(".btn-subtitle");
 const paragraphButton = document.querySelector(".btn-paragraph");
 

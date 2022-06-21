@@ -62,30 +62,39 @@ uploadButton.addEventListener("click", () => {
 
   // user-added subtitles validation;
 
-  let inputsAreValid = true;
-
   let subtitles = document.querySelectorAll(".input");
 
-  subtitles.forEach((sub) => {
-    if (sub.value.length < 5) {
-      inputsAreValid = false;
-      return;
-    }
-    inputsAreValid = true;
-  });
+  if (subtitles.length > 0) {
+    subtitles.forEach((sub) => {
+      if (sub.value.length < 5) {
+        if (!sub.nextSibling.classList.contains("error")) {
+          let p = document.createElement("p");
+          p.classList.add("error");
+          p.innerHTML = "Must be more than 5 characters long.";
+
+          sub.insertAdjacentElement("afterend", p);
+        }
+      }
+    });
+    alert("You still have subtitles pending to be added.");
+    return;
+  }
+
+  // user-added paragraphs validation;
 
   let paragraphs = document.querySelectorAll(".textarea");
 
-  paragraphs.forEach((paragraph) => {
-    if (paragraph.value.length < 15) {
-      inputsAreValid = false;
-      return;
-    }
-    inputsAreValid = true;
-  });
+  if (paragraphs.length > 0) {
+    paragraphs.forEach((paragraph) => {
+      if (paragraph.value.length < 15) {
+        let p = document.createElement("p");
+        p.classList.add("error");
+        p.innerHTML = "Must be more than 15 characters long.";
 
-  if (!inputsAreValid) {
-    alert("All input fields must be added (or canceled).");
+        paragraph.insertAdjacentElement("afterend", p);
+      }
+    });
+    alert("You still have paragraphs pending to be added.");
     return;
   }
 
