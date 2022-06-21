@@ -37,4 +37,9 @@ class UsersLoader
     }
     return false;
   }
+
+  function get_one_user($id)
+  {
+    return $this->getter->get_one_user($id);
+  }
 }
