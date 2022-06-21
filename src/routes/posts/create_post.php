@@ -55,7 +55,7 @@ include __DIR__ . '/../../utils/renderer.php';
         <textarea class="textarea-content form-control" placeholder="Add your content here..." required></textarea>
       </div>
 
-      <div class="post-content"></div>
+      <div class="content"></div>
     </div>
 
     <div class="container container-upload">

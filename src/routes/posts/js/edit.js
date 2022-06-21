@@ -14,9 +14,14 @@ editButton.addEventListener("click", () => {
   // cancel update button
   const cancelUpdateScript = document.createElement("script");
   cancelUpdateScript.src = "js/cancelUpdate.js";
+  // add elements button
+  const addElementsButton = document.createElement("script");
+  addElementsButton.src = "js/addElementsButton.js";
 
   // append scripts to the body
-  document.querySelector("body").append(updatePostScript, cancelUpdateScript);
+  document
+    .querySelector("body")
+    .append(updatePostScript, cancelUpdateScript, addElementsButton);
 
   /* main subtitle */
 
@@ -42,7 +47,7 @@ editButton.addEventListener("click", () => {
   // subtitle elements
   document.querySelectorAll(".h3").forEach((h3) => {
     // create an input with the same value as the h3
-    const input = createInput("input", h3.innerHTML);
+    const input = createNewInput("input", h3.innerHTML);
 
     // wrap it in its own wrapper
     const inputWrapper = wrap(document.createElement("div"), input);
@@ -56,22 +61,27 @@ editButton.addEventListener("click", () => {
     confirmButton.innerHTML = "Confirm";
     // functionality
     confirmButton.addEventListener("click", () => {
-      // create an h3 with the new text (input's value)
-      const newH3 = document.createElement("h3");
-      newH3.classList.add("h3");
-      newH3.innerHTML = input.value;
-      // append it to the element wrapper and delete input wrapper
-      elementWrapper.appendChild(newH3);
-      elementWrapper.removeChild(inputWrapper);
+      // only if input has the required length;
+      if (input.value.length > 5 && input.value.length < 255) {
+        // create an h3 with the new text (input's value)
+        const newH3 = document.createElement("h3");
+        newH3.classList.add("h3");
+        newH3.innerHTML = input.value;
+        // append it to the element wrapper and delete input wrapper
+        elementWrapper.appendChild(newH3);
+        elementWrapper.removeChild(inputWrapper);
+      } else {
+        alert("All subtitles must have 5 or more characters.");
+      }
     });
 
-    const cancelButton = createCancelButton(
+    const cancelButton = createNewCancelButton(
       h3.innerHTML,
       elementWrapper,
       "h3",
       inputWrapper
     );
-    const deleteButton = createDeleteButton(elementWrapper);
+    const deleteButton = createNewDeleteButton(elementWrapper);
 
     // append them to the input wrapper
     inputWrapper.append(confirmButton, cancelButton, deleteButton);
@@ -82,7 +92,7 @@ editButton.addEventListener("click", () => {
 
   // paragraph elements (same logic as the h3s)
   document.querySelectorAll(".p").forEach((p) => {
-    const textarea = createInput("textarea", p.innerHTML);
+    const textarea = createNewInput("textarea", p.innerHTML);
     const textareaWrapper = wrap(document.createElement("div"), textarea);
     const elementWrapper = wrap(p.parentNode, textareaWrapper);
 
@@ -90,20 +100,24 @@ editButton.addEventListener("click", () => {
     confirmButton.classList.add("btn", "btn-confirm-edit");
     confirmButton.innerHTML = "Confirm";
     confirmButton.addEventListener("click", () => {
-      const newP = document.createElement("p");
-      newP.classList.add("p");
-      newP.innerHTML = textarea.value;
-      elementWrapper.appendChild(newP);
-      elementWrapper.removeChild(textareaWrapper);
+      if (textarea.value.length > 15 && textarea.value.length < 65535) {
+        const newP = document.createElement("p");
+        newP.classList.add("p");
+        newP.innerHTML = textarea.value;
+        elementWrapper.appendChild(newP);
+        elementWrapper.removeChild(textareaWrapper);
+      } else {
+        alert("All paragraphs must have 15 or more characters.");
+      }
     });
 
-    const cancelButton = createCancelButton(
+    const cancelButton = createNewCancelButton(
       p.innerHTML,
       elementWrapper,
       "p",
       textareaWrapper
     );
-    const deleteButton = createDeleteButton(elementWrapper);
+    const deleteButton = createNewDeleteButton(elementWrapper);
 
     textareaWrapper.append(confirmButton, cancelButton, deleteButton);
     elementWrapper.removeChild(p);
@@ -112,7 +126,7 @@ editButton.addEventListener("click", () => {
 
 /* Functions */
 
-const createInput = (name, value) => {
+const createNewInput = (name, value) => {
   const input = document.createElement(`${name}`);
   input.type = "text";
   input.classList.add(`${name}`);
@@ -127,7 +141,7 @@ const wrap = (wrapper, wrapped) => {
   return wrapper;
 };
 
-const createCancelButton = (
+const createNewCancelButton = (
   oldValue,
   wrapper,
   createdElement,
@@ -150,7 +164,7 @@ const createCancelButton = (
   return cancelButton;
 };
 
-const createDeleteButton = (wrapper) => {
+const createNewDeleteButton = (wrapper) => {
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("btn", "btn-delete-element", "btn-danger");
   const trashCan = document.createElement("i");

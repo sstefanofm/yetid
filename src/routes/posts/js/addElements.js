@@ -1,4 +1,4 @@
-const post = document.querySelector(".post-content");
+const post = document.querySelector(".content");
 const subtitleButton = document.querySelector(".btn-subtitle");
 const paragraphButton = document.querySelector(".btn-paragraph");
 
@@ -10,15 +10,19 @@ subtitleButton.addEventListener("click", () => {
   const addButton = createAddButton();
   // functionality
   addButton.addEventListener("click", () => {
-    // create a h3
-    const newH3 = document.createElement("h3");
-    newH3.classList.add("h3");
-    // the inner text is the input's value
-    newH3.innerHTML = input.value;
-    // append it to the element wrapper
-    addButton.parentNode.parentNode.appendChild(newH3);
-    // delete the input wrapper
-    addButton.parentNode.remove(addButton.parentNode);
+    // the inner text is the input's value must be greater than 5 characters long
+    if (input.value.length > 5 && input.value.length < 255) {
+      // create a h3
+      const newH3 = document.createElement("h3");
+      newH3.classList.add("h3");
+      newH3.innerHTML = input.value;
+      // append it to the element wrapper
+      addButton.parentNode.parentNode.appendChild(newH3);
+      // delete the input wrapper
+      addButton.parentNode.remove(addButton.parentNode);
+    } else {
+      alert("All subtitles must have 5 or more characters.");
+    }
   });
 
   // create cancel button
@@ -41,11 +45,15 @@ paragraphButton.addEventListener("click", () => {
 
   const addButton = createAddButton();
   addButton.addEventListener("click", () => {
-    const newP = document.createElement("p");
-    newP.classList.add("p");
-    newP.innerHTML = textarea.value;
-    addButton.parentNode.parentNode.appendChild(newP);
-    addButton.parentNode.remove(addButton.parentNode);
+    if (textarea.value.length > 15 && textarea.value.length < 65535) {
+      const newP = document.createElement("p");
+      newP.classList.add("p");
+      newP.innerHTML = textarea.value;
+      addButton.parentNode.parentNode.appendChild(newP);
+      addButton.parentNode.remove(addButton.parentNode);
+    } else {
+      alert("All paragraphs must have 15 or more characters.");
+    }
   });
 
   const cancelButton = createCancelButton();
