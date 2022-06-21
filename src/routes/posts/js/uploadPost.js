@@ -1,7 +1,7 @@
-const postContent = document.querySelector(".post-body");
 const uploadButton = document.querySelector(".btn-upload");
 const mainSubtitle = document.querySelector(".input-subtitle");
 const mainContent = document.querySelector(".textarea-content");
+const postContent = document.querySelector(".post-content");
 
 const validateString = (str, minLength, maxLength) => {
   const trimmed = str.trim();
@@ -96,6 +96,7 @@ uploadButton.addEventListener("click", () => {
   // postTitle already been declared at validateTitle.js;
   formData.append("title", postTitle.value.trim());
   formData.append("main_subtitle", mainSubtitle.value.trim());
+  formData.append("main_content", mainContent.value.trim());
   formData.append("content", postContent.innerHTML);
 
   fetch("controller/upload_post.php", {
