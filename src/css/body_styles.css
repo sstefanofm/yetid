@@ -2,6 +2,21 @@ body {
   background-color: #fafafa !important;
 }
 
+.default-border {
+  border: 1px solid #c4c4c4;
+  border-radius: 6px;
+}
+
 .alert {
   border-radius: 0px !important;
+}
+
+/* header */
+
+.order-by {
+  float: right;
+}
+
+.order-by-content {
+  float: right;
 }
