@@ -6,11 +6,12 @@ include __DIR__ . '/../model/PostCreator.php';
 
 $title = $_POST['title'];
 $content = $_POST['content'];
+$main_subtitle = $_POST['main_subtitle'];
 $username = $_SESSION['username'];
 
 $creator = new PostCreator();
 
-if ($creator->run($title, $content, $username)) {
+if ($creator->run($title, $content, $username, $main_subtitle)) {
   $_SESSION['success'] = true;
   $_SESSION['message'] = "Post created successfully!";
   $_SESSION['message_showed'] = false;

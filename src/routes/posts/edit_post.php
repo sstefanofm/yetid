@@ -45,7 +45,14 @@ include __DIR__ . '/../../includes/head.php';
     </div>
 
     <div class="container post-body">
-      <?php echo $post['content'] ?>
+      <div class="main-subtitle">
+        <?php echo $post['main_subtitle'] ?>
+      </div>
+
+      <div class="content">
+        <?php echo $post['content'] ?>
+
+      </div>
     </div>
 
     <div class="container post-footer">

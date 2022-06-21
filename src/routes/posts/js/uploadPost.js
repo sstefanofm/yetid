@@ -60,8 +60,8 @@ uploadButton.addEventListener("click", () => {
     return;
   }
 
-  // user-added subtitles validation
-  //
+  // user-added subtitles validation;
+
   let inputsAreValid = true;
 
   let subtitles = document.querySelectorAll(".input");
@@ -89,9 +89,13 @@ uploadButton.addEventListener("click", () => {
     return;
   }
 
+  /* after all valdiations... send POST request to upload_post.php controller */
+
   let formData = new FormData();
-  // postTitle already been declared at validateTitle.js
+
+  // postTitle already been declared at validateTitle.js;
   formData.append("title", postTitle.value.trim());
+  formData.append("main_subtitle", mainSubtitle.value.trim());
   formData.append("content", postContent.innerHTML);
 
   fetch("controller/upload_post.php", {
