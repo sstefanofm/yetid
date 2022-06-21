@@ -1,7 +1,7 @@
 const uploadButton = document.querySelector(".btn-upload");
 const mainSubtitle = document.querySelector(".input-subtitle");
 const mainContent = document.querySelector(".textarea-content");
-const postContent = document.querySelector(".post-content");
+const postContent = document.querySelector(".content");
 
 const validateString = (str, minLength, maxLength) => {
   const trimmed = str.trim();
