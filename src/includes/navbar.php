@@ -33,6 +33,15 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 ?>
   <div class="hidden user-options">
     <div class="user-username"><?php echo $_SESSION['username'] ?></div>
+    <?php
+    if ($_SESSION['admin']) {
+    ?>
+      <div class="create-user">
+        <a href="http://localhost/stf/yetid/src/routes/admin/create_user.php">Create user</a>
+      </div>
+    <?php
+    }
+    ?>
     <div class="user-logout"><button class="logout btn">Log out</button></div>
   </div>
 <?php
