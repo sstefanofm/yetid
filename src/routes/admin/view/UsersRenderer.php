@@ -38,6 +38,7 @@ class UsersRenderer
       </td>
 
       <td class="delete">
+        <button class="btn btn-warning btn-edit-user" id="<?php echo $user['id'] ?>"><i class="bi bi-pencil"></i></button>
         <button class="btn btn-danger btn-delete-user" id="<?php echo $user['id'] ?>"><i class="bi bi-trash"></i></button>
       </td>
     </tr>
