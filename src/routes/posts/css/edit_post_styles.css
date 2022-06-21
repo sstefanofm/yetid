@@ -49,6 +49,16 @@
   margin-bottom: 1.5em;
 }
 
+.main-subtitle-input,
+.main-content-textarea {
+  width: 90% !important;
+  font-style: italic;
+}
+
+.main-subtitle-input {
+  font-size: 1em;
+}
+
 .post-body {
   padding-bottom: 1em;
   margin-left: 2em;

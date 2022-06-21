@@ -1,4 +1,6 @@
 const editButton = document.querySelector(".btn-edit");
+const mainSubtitle = document.querySelector(".main-subtitle");
+const mainContent = document.querySelector(".main-content");
 
 editButton.addEventListener("click", () => {
   // disable edit Button permanently
@@ -16,7 +18,28 @@ editButton.addEventListener("click", () => {
   // append scripts to the body
   document.querySelector("body").append(updatePostScript, cancelUpdateScript);
 
-  // title elements
+  /* main subtitle */
+
+  // create input with main-subtitle value;
+  const mainSubInput = document.createElement("input");
+  mainSubInput.type = "text";
+  // add the main-subtitle class so I can pass it to the FormData when updating;
+  mainSubInput.classList.add("main-subtitle-input", "form-control");
+  mainSubInput.value = mainSubtitle.innerHTML.trim();
+  // append it to the main-subtitle div;
+  mainSubtitle.innerHTML = "";
+  mainSubtitle.appendChild(mainSubInput);
+
+  /* main content */
+
+  // same logic as the main subtitle;
+  const mainContentInput = document.createElement("textarea");
+  mainContentInput.classList.add("main-content-textarea", "form-control");
+  mainContentInput.value = mainContent.innerHTML.trim();
+  mainContent.innerHTML = "";
+  mainContent.appendChild(mainContentInput);
+
+  // subtitle elements
   document.querySelectorAll(".h3").forEach((h3) => {
     // create an input with the same value as the h3
     const input = createInput("input", h3.innerHTML);
