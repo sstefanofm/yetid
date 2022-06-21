@@ -127,6 +127,7 @@ include __DIR__ . '/../../includes/head.php';
   <script src="js/goToPage.js"></script>
   <script src="js/orderByButton.js"></script>
   <script src="js/deleteUser.js"></script>
+  <script src="js/editUser.js"></script>
 
   <?php
   include __DIR__ . '/../../includes/scripts.php';
