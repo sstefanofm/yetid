@@ -24,3 +24,8 @@ function redirect_to_edit($id)
 {
   redirect_to("http://localhost/stf/yetid/src/routes/posts/edit_post.php?id=$id");
 }
+
+function redirect_to_create_user()
+{
+  redirect_to("http://localhost/stf/yetid/src/routes/admin/create_user.php");
+}
