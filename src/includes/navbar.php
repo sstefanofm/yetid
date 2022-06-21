@@ -39,6 +39,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
       <div class="create-user">
         <a href="http://localhost/stf/yetid/src/routes/admin/create_user.php">Create user</a>
       </div>
+      <div class="view-users">
+        <a href="http://localhost/stf/yetid/src/routes/admin/view_users.php">View users</a>
+      </div>
     <?php
     }
     ?>

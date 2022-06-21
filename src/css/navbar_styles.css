@@ -48,7 +48,8 @@
 
 .user-username,
 .logout,
-.create-user {
+.create-user,
+.view-users {
   padding-top: 10px;
   padding-bottom: 10px;
   border: 1px solid #c4c4c4;
@@ -59,7 +60,8 @@
   font-family: "Metamorphous", cursive;
 }
 
-.create-user > a {
+.create-user > a,
+.view-users > a {
   color: #000;
 }
 .user-logout {

@@ -19,7 +19,7 @@ if ($creator->run($username, $password, $role)) {
   $_SESSION['message'] = "New user created successfully!";
   $_SESSION['message_showed'] = false;
 
-  redirect_to_index();
+  redirect_to_create_user();
 
   die();
 }
