@@ -33,14 +33,26 @@
 }
 
 .post-title {
-  font-size: 1.8em;
-  margin-top: -9px;
+  font-size: 2em;
+  margin-top: -10px;
 }
 
 /* post body */
 
+.main-subtitle {
+  font-style: italic;
+  font-size: 1.8em;
+}
+
+.main-content {
+  font-style: italic;
+  margin-bottom: 1.5em;
+}
+
 .post-body {
   padding-bottom: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 .h3 {

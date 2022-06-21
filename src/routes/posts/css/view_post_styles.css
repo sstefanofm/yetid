@@ -32,15 +32,21 @@
 
 /* post body */
 
+.main-subtitle {
+  font-style: italic;
+  font-size: 1.8em;
+}
+
+.main-content {
+  font-style: italic;
+  margin-bottom: 1.5em;
+}
+
 .post-body {
   padding-bottom: 1em;
+  margin-right: 2em;
 }
 
 .h3 {
-  padding-left: 0.5em;
   font-size: 1.5em;
-}
-
-.p {
-  padding-left: 1em;
 }
