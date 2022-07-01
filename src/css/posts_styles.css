@@ -21,6 +21,12 @@
   color: #fafafa;
 }
 
+.btn-home,
+.btn-explore,
+.btn-create {
+  padding-left: 25px;
+  padding-right: 25px;
+}
 .btn-home {
   background-color: #9f1f33;
 }
