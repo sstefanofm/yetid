@@ -6,7 +6,6 @@ document.querySelector(".btn-delete").insertAdjacentHTML(
 <div class="add-content hidden">
   <button class="btn btn-secondary btn-subtitle">Subtitle</button>
   <button class="btn btn-secondary btn-paragraph">Paragraph</button>
-  <button class="btn btn-secondary btn-image">Image</button>
 </div>
 `
 );

@@ -36,7 +36,6 @@ include __DIR__ . '/../../utils/renderer.php';
       <div class="add-content hidden">
         <button class="btn btn-subtitle">Subtitle</button>
         <button class="btn btn-paragraph">Paragraph</button>
-        <button class="btn btn-image">Image</button>
       </div>
     </div>
 
