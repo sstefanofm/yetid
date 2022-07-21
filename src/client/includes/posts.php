@@ -58,6 +58,9 @@ if ($logged) {
     if (!$logged) {
     ?>
       <p class="not-logged">You have to be logged in to see your posts</p>
+      <div class="not-logged">
+        <a class="btn btn-secondary" href="routes/login/login.php">Log in</a>
+      </div>
     <?php
     } else {
       for ($i = 0; $i < $max_results; $i++) {
