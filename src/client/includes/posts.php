@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 include __DIR__ . '/../routes/posts/view/PostsRenderer.php';
 
 $posts_renderer = new PostsRenderer();
@@ -30,7 +28,7 @@ if ($logged) {
 <div class="posts-container default-border">
   <div class="posts-header default-border">
     <button class="btn btn-colors btn-home">Home</button>
-    <button class="btn btn-colors btn-explore">Explore</button>
+    <button class="btn btn-colors btn-explore">Explore</a></button>
     <?php
     if ($_SESSION['logged_in']) {
     ?>
@@ -98,7 +96,6 @@ if ($logged) {
 </div>
 
 <script src="js/orderByButton.js"></script>
-<script src="js/goToCreatePost.js"></script>
 <script src="js/goToPage.js"></script>
 <script src="js/goToExplore.js"></script>
 <script src="js/clickPost.js"></script>
