@@ -19,10 +19,7 @@ include __DIR__ . '/includes/head.php';
   ?>
 
   <?php
-  if (!$_SESSION['message_showed']) {
-    render_alert($_SESSION['success'], $_SESSION['message']);
-    $_SESSION['message_showed'] = true;
-  }
+  render_alert($_SESSION['success'], $_SESSION['message']);
   ?>
 
   <?php
