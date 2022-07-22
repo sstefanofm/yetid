@@ -1,10 +1,11 @@
 <?php
 
 include __DIR__ . '/../routes/posts/view/PostsRenderer.php';
+include __DIR__ . '/../shared/pagination/PagesNumbers.php';
 
+$max_results = 5;
 $posts_renderer = new PostsRenderer();
-
-$page_number = (!isset($_GET['page']) || $_GET['page'] <= 0) ? 1 : (int) $_GET['page'];
+$pages_numbers = new PagesNumbers($posts_renderer, $max_results);
 
 $logged = $_SESSION['logged_in'];
 
@@ -73,25 +74,9 @@ if ($logged) {
   </div>
 
   <div class="posts-footer default-border">
-    <div class="pages-numbers">
-      <?php
-      if ($page_number > 1) {
-        for ($i = 1; $i < $page_number; $i++) {
-      ?>
-          <button class="btn btn-page"><?php echo $i ?></button>
-      <?php
-        }
-      }
-      ?>
-      <button class="btn btn-page current-page"><?php echo $page_number ?></button>
-      <?php
-      for ($i = $page_number + 1; $i < $max_pages + 1; $i++) {
-      ?>
-        <button class="btn btn-page"><?php echo $i ?></button>
-      <?php
-      }
-      ?>
-    </div>
+    <?php
+    $pages_numbers->render();
+    ?>
   </div>
 </div>
 
