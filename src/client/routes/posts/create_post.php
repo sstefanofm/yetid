@@ -1,5 +1,9 @@
 <?php
+
 session_start();
+
+include __DIR__ . '/../../shared/renderers/home_explore_buttons.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +33,9 @@ include __DIR__ . '/../../utils/renderer.php';
 
   <div class="post-container default-border">
     <div class="post-options default-border">
-      <button class="btn btn-colors btn-home">Home</button>
-      <button class="btn btn-colors btn-explore">Explore</button>
+      <?php
+      render_home_explore_buttons();
+      ?>
       <button class="btn btn-add"><span class="add-sign">&nbsp;+&nbsp;</span>ADD</button>
 
       <div class="add-content hidden">
@@ -66,8 +71,6 @@ include __DIR__ . '/../../utils/renderer.php';
   <script src="js/addButtonToggle.js"></script>
   <script src="js/addElements.js"></script>
   <script src="js/uploadPost.js"></script>
-  <script src="../../js/goToHome.js"></script>
-  <script src="../../js/goToExplore.js"></script>
 
 </body>
 

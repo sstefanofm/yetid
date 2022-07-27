@@ -5,6 +5,7 @@ include __DIR__ . '/../shared/pagination/PagesNumbers.php';
 include __DIR__ . '/../shared/renderers/create_button.php';
 include __DIR__ . '/../shared/renderers/order_by_button.php';
 include __DIR__ . '/../shared/renderers/not_logged_message.php';
+include __DIR__ . '/../shared/renderers/home_explore_buttons.php';
 
 $max_results = 5;
 $posts_renderer = new PostsRenderer();
@@ -31,10 +32,9 @@ if ($logged) {
 
 <div class="posts-container default-border">
   <div class="posts-header default-border">
-    <button class="btn btn-colors btn-home">Home</button>
-    <button class="btn btn-colors btn-explore">Explore</a></button>
 
     <?php
+    render_home_explore_buttons();
     render_create_button($logged);
     render_order_by_button();
     ?>
@@ -66,5 +66,4 @@ if ($logged) {
 </div>
 
 <script src="js/goToPage.js"></script>
-<script src="js/goToExplore.js"></script>
 <script src="js/clickPost.js"></script>

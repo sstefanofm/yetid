@@ -6,6 +6,7 @@ include __DIR__ . '/view/PostsRenderer.php';
 include __DIR__ . '/../../shared/pagination/PagesNumbers.php';
 include __DIR__ . '/../../shared/renderers/create_button.php';
 include __DIR__ . '/../../shared/renderers/order_by_button.php';
+include __DIR__ . '/../../shared/renderers/home_explore_buttons.php';
 
 // max number of results coming from the database (when using "LIMIT $row_start, $max_results")
 $max_results = 7;
@@ -43,10 +44,9 @@ include __DIR__ . '/../../includes/head.php';
 
   <div class="posts-container default-border">
     <div class="posts-header default-border">
-      <button class="btn btn-colors btn-home">Home</button>
-      <button class="btn btn-colors btn-explore">Explore</button>
 
       <?php
+      render_home_explore_buttons();
       render_create_button($_SESSION['logged_in']);
       render_order_by_button();
       ?>
@@ -71,7 +71,6 @@ include __DIR__ . '/../../includes/head.php';
   </div>
 
   <script src="../../js/goToCreatePost.js"></script>
-  <script src="../../js/goToHome.js"></script>
   <script src="js/goToPage.js"></script>
   <script src="js/clickPost.js"></script>
 
