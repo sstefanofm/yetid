@@ -6,6 +6,7 @@ include __DIR__ . '/view/UsersRenderer.php';
 include __DIR__ . '/../../utils/redirect_to.php';
 include __DIR__ . '/../../utils/renderer.php';
 include __DIR__ . '/../../shared/pagination/PagesNumbers.php';
+include __DIR__ . '/../../shared/renderers/order_by_button.php';
 
 if (!$_SESSION['admin']) {
   $_SESSION['success'] = false;
@@ -59,21 +60,9 @@ include __DIR__ . '/../../includes/head.php';
 
   <div class="container users-container default-border">
     <div class="container users-header">
-      <div class="order-by">
-        <button class="btn btn-order-by">
-          <?php
-          if (strcmp($_SESSION['order_by'], "DESC") == 0 || !isset($_SESSION['order_by'])) {
-            echo "Recent";
-          } else {
-            echo "Old";
-          }
-          ?> &nbsp;&nbsp;<span class="order-sign">^</span>&nbsp;</button>
-
-        <div class="order-by-content hidden">
-          <button class="btn btn-option btn-recent">Most recent</button>
-          <button class="btn btn-option btn-old">Most old</button>
-        </div>
-      </div>
+      <?php
+      render_order_by_button($_SESSION['order_by']);
+      ?>
     </div>
 
     <div class="container users-body">
@@ -108,7 +97,6 @@ include __DIR__ . '/../../includes/head.php';
   </div>
 
   <script src="js/goToPage.js"></script>
-  <script src="js/orderByButton.js"></script>
   <script src="js/deleteUser.js"></script>
   <script src="js/editUser.js"></script>
 

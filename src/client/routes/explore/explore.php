@@ -5,6 +5,7 @@ session_start();
 include __DIR__ . '/view/PostsRenderer.php';
 include __DIR__ . '/../../shared/pagination/PagesNumbers.php';
 include __DIR__ . '/../../shared/renderers/create_button.php';
+include __DIR__ . '/../../shared/renderers/order_by_button.php';
 
 // max number of results coming from the database (when using "LIMIT $row_start, $max_results")
 $max_results = 7;
@@ -44,22 +45,12 @@ include __DIR__ . '/../../includes/head.php';
     <div class="posts-header default-border">
       <button class="btn btn-colors btn-home">Home</button>
       <button class="btn btn-colors btn-explore">Explore</button>
+
       <?php
       render_create_button($_SESSION['logged_in']);
+      render_order_by_button($_SESSION['order_by']);
       ?>
-      <button class="btn btn-order-by">
-        <?php
-        if (strcmp($_SESSION['order_by'], "DESC") == 0 || !isset($_SESSION['order_by'])) {
-          echo "Recent";
-        } else {
-          echo "Old";
-        }
-        ?> &nbsp;&nbsp;<span class="order-sign">^</span>&nbsp;</button>
 
-      <div class="order-by-content hidden">
-        <button class="btn btn-option btn-recent">Most recent</button>
-        <button class="btn btn-option btn-old">Most old</button>
-      </div>
     </div>
 
     <div class="posts-body default-border">
@@ -79,7 +70,6 @@ include __DIR__ . '/../../includes/head.php';
     </div>
   </div>
 
-  <script src="../../js/orderByButton.js"></script>
   <script src="../../js/goToCreatePost.js"></script>
   <script src="../../js/goToHome.js"></script>
   <script src="js/goToPage.js"></script>
