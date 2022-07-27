@@ -2,6 +2,7 @@
 
 include __DIR__ . '/../routes/posts/view/PostsRenderer.php';
 include __DIR__ . '/../shared/pagination/PagesNumbers.php';
+include __DIR__ . '/../shared/renderers/create_button.php';
 
 $max_results = 5;
 $posts_renderer = new PostsRenderer();
@@ -31,11 +32,7 @@ if ($logged) {
     <button class="btn btn-colors btn-home">Home</button>
     <button class="btn btn-colors btn-explore">Explore</a></button>
     <?php
-    if ($_SESSION['logged_in']) {
-    ?>
-      <button class="btn btn-colors btn-create"><span class="add-sign">[+]</span>&nbsp;Create</button>
-    <?php
-    }
+    render_create_button($_SESSION['logged_in']);
     ?>
     <button class="btn btn-order-by">
       <?php
