@@ -4,6 +4,7 @@ include __DIR__ . '/../routes/posts/view/PostsRenderer.php';
 include __DIR__ . '/../shared/pagination/PagesNumbers.php';
 include __DIR__ . '/../shared/renderers/create_button.php';
 include __DIR__ . '/../shared/renderers/order_by_button.php';
+include __DIR__ . '/../shared/renderers/not_logged_message.php';
 
 $max_results = 5;
 $posts_renderer = new PostsRenderer();
@@ -34,22 +35,18 @@ if ($logged) {
     <button class="btn btn-colors btn-explore">Explore</a></button>
 
     <?php
-    render_create_button($_SESSION['logged_in']);
-    render_order_by_button($_SESSION['order_by']);
+    render_create_button($logged);
+    render_order_by_button();
     ?>
 
   </div>
 
   <div class="posts-body default-border">
     <?php
-    if (!$logged) {
+    render_not_logged_message($logged);
     ?>
-      <p class="not-logged">You have to be logged in to see your posts</p>
-      <div class="not-logged">
-        <a class="btn btn-secondary" href="routes/login/login.php">Log in</a>
-      </div>
-    <?php
-    } else {
+    <?
+    if ($logged) {
       for ($i = 0; $i < $max_results; $i++) {
         if (!$posts_renderer->is_empty()) {
           $posts_renderer->render_next();
