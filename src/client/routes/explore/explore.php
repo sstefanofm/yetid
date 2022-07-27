@@ -48,7 +48,7 @@ include __DIR__ . '/../../includes/head.php';
 
       <?php
       render_create_button($_SESSION['logged_in']);
-      render_order_by_button($_SESSION['order_by']);
+      render_order_by_button();
       ?>
 
     </div>
