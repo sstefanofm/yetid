@@ -5,6 +5,7 @@ session_start();
 include __DIR__ . '/view/UsersRenderer.php';
 include __DIR__ . '/../../utils/redirect_to.php';
 include __DIR__ . '/../../utils/renderer.php';
+include __DIR__ . '/../../shared/pagination/PagesNumbers.php';
 
 if (!$_SESSION['admin']) {
   $_SESSION['success'] = false;
@@ -19,11 +20,9 @@ if (!$_SESSION['admin']) {
 $max_results = 5;
 
 $getter = new UsersRenderer();
+$pages_numbers = new PagesNumbers($getter, $max_results);
 
-// fetch number of users to show pages;
-$total_users = $getter->count_total_users();
-$max_pages = ceil($total_users / $max_results);
-
+// this is to fetch certain posts;
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $row_start = ($current_page - 1) * $max_results;
 $order_by = isset($_SESSION['order_by']) ? $_SESSION['order_by'] : "DESC";
@@ -102,25 +101,9 @@ include __DIR__ . '/../../includes/head.php';
     <hr>
 
     <div class="container users-footer">
-      <div class="pages-numbers">
-        <?php
-        if ($current_page > 1) {
-          for ($i = 1; $i < $current_page; $i++) {
-        ?>
-            <button class="btn btn-page"><?php echo $i ?></button>
-        <?php
-          }
-        }
-        ?>
-        <button class="btn btn-page current-page"><?php echo $current_page ?></button>
-        <?php
-        for ($i = $current_page + 1; $i < $max_pages + 1; $i++) {
-        ?>
-          <button class="btn btn-page"><?php echo $i ?></button>
-        <?php
-        }
-        ?>
-      </div>
+      <?php
+      $pages_numbers->render();
+      ?>
     </div>
   </div>
 
