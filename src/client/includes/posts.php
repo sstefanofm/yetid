@@ -3,6 +3,7 @@
 include __DIR__ . '/../routes/posts/view/PostsRenderer.php';
 include __DIR__ . '/../shared/pagination/PagesNumbers.php';
 include __DIR__ . '/../shared/renderers/create_button.php';
+include __DIR__ . '/../shared/renderers/order_by_button.php';
 
 $max_results = 5;
 $posts_renderer = new PostsRenderer();
@@ -31,22 +32,12 @@ if ($logged) {
   <div class="posts-header default-border">
     <button class="btn btn-colors btn-home">Home</button>
     <button class="btn btn-colors btn-explore">Explore</a></button>
+
     <?php
     render_create_button($_SESSION['logged_in']);
+    render_order_by_button($_SESSION['order_by']);
     ?>
-    <button class="btn btn-order-by">
-      <?php
-      if (strcmp($_SESSION['order_by'], "DESC") == 0 || !isset($_SESSION['order_by'])) {
-        echo "Recent";
-      } else {
-        echo "Old";
-      }
-      ?> &nbsp;&nbsp;<span class="order-sign">^</span>&nbsp;</button>
 
-    <div class="order-by-content hidden">
-      <button class="btn btn-option btn-recent">Most recent</button>
-      <button class="btn btn-option btn-old">Most old</button>
-    </div>
   </div>
 
   <div class="posts-body default-border">
@@ -77,7 +68,6 @@ if ($logged) {
   </div>
 </div>
 
-<script src="js/orderByButton.js"></script>
 <script src="js/goToPage.js"></script>
 <script src="js/goToExplore.js"></script>
 <script src="js/clickPost.js"></script>
